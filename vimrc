@@ -43,8 +43,8 @@ set noswapfile
 nnoremap ; :
 
 " == windowing
-map <silent> <A-j> :cnext
-map <silent> <A-k> :cprevious
+map <silent> <A-j> :cnext<CR>
+map <silent> <A-k> :cprevious<CR>
 
 " change the mapleader from \ to ,
 let mapleader=","
