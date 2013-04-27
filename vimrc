@@ -109,9 +109,9 @@ let g:EasyGrepRecursive = 1
 let g:EasyGrepIgnoreCase = 1
 
 " == NERDTree auto open and auto close
-autocmd vimenter * NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"autocmd vimenter * NERDTree
+"autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " == sync NERDTree to current file (http://superuser.com/questions/195022/vim-how-to-synchronize-nerdtree-with-current-opened-tab-file-path)
 " returns true iff is NERDTree open/active
