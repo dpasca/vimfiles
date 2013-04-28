@@ -180,25 +180,24 @@ color candycode
 syn match Braces display '[{}()\[\]]'
 hi Braces guifg=yellow
 
-
 if MySys() == "mac"
-	set gfn=Andale\ Mono:h13	" Mac
-	"set gfn=Menlo:h14
+    set gfn=Andale\ Mono:h12 " Mac
+    "set gfn=Menlo:h14
 elseif MySys() == "windows"
-	"set gfn=MS\ Gothic:h10		" Windows
-	set gfn=Bitstream\ Vera\ Sans\ Mono:h9
+    "set gfn=MS\ Gothic:h10		" Windows
+    set gfn=Bitstream\ Vera\ Sans\ Mono:h9
 elseif MySys() == "linux"
-	"set gfn=Monospace\ 10
+    "set gfn=Monospace\ 10
 endif
 
 if has("gui_running")
-	set columns=170 lines=56
+    set columns=170 lines=56
 else
-	set columns=170
+    set columns=170
 endif
  
 " == Fix the swap file issue with Win 7
 if MySys() == "windows"
-	set dir=$TEMP
+    set dir=$TEMP
 endif
 
