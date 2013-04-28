@@ -46,8 +46,14 @@ nnoremap ; :
 map <silent> <A-j> :cnext<CR>
 map <silent> <A-k> :cprevious<CR>
 
+" == hints on wild menu
+set wildchar=<Tab> wildmenu wildmode=full
+
 " change the mapleader from \ to ,
 let mapleader=","
+
+" == CtrlP tags lookup
+nnoremap <leader>s :CtrlPTag<CR>
 
 " ,cd to change the dir to the current file
 nnoremap ,cd :cd %:p:h<CR> 
