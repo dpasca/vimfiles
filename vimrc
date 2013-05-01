@@ -64,7 +64,7 @@ autocmd GUIEnter * set visualbell t_vb=
 set tm=500
 
 " == shortcuts
-map <C-TAB> :b#<CR>
+"map <C-TAB> :b#<CR>
  
 " == share clipboard with system (Windows only ?)
 set clipboard=unnamed
@@ -169,8 +169,8 @@ set pumheight=20
 "let g:ctrlp_map = '<c-p>'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$|\bin$|\obj$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$|bin$|obj$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.d$',
   \ }
 
 " == Settings for fswitch
