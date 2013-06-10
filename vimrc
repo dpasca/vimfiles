@@ -42,9 +42,13 @@ set nobackup
 set noswapfile
 nnoremap ; :
 
+" automatically refresh changed files
+set autoread
+
 " == windowing
 map <silent> <A-j> :cnext<CR>
 map <silent> <A-k> :cprevious<CR>
+map <silent> <A-c> :cclose<CR>
 
 " == hints on wild menu
 set wildchar=<Tab> wildmenu wildmode=full
@@ -56,7 +60,7 @@ let mapleader=","
 nnoremap <leader>s :CtrlPTag<CR>
 
 " ,cd to change the dir to the current file
-nnoremap ,cd :cd %:p:h<CR> 
+nnoremap <leader>cd :cd %:p:h<CR> 
 
 " No sound on errors
 set noerrorbells visualbell t_vb=
