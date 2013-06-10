@@ -22,3 +22,5 @@ Using *pathogen* to have all plugins in individual dirs (git submodules actually
 * **ctrlp**: ctrl-p to quickly search for file names, and recent files (do ctrl-b afterwards)
 * **fswitch**: quickly switch between *.cpp* and *.h* (I mapped it to \<leader\>o)
 * **nerdtree**: side bar to browse and open files and dirs
+* **DirDif**: compare dirs recursively with DirDiff \<A dir\> \<B dir\>
+

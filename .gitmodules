@@ -19,3 +19,6 @@
 [submodule "bundle/fswitch"]
 	path = bundle/fswitch
 	url = git://github.com/derekwyatt/vim-fswitch.git
+[submodule "bundle/DirDiff"]
+	path = bundle/DirDiff
+	url = git://github.com/vim-scripts/DirDiff.vim.git
