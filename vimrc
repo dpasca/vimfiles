@@ -5,14 +5,31 @@ fun! MySys()
 		return "mac"
 endfun
 
-" == pathogen exclusions
-"let g:pathogen_disabled = []
-"if MySys() == "windows"
-"    call add(g:pathogen_disabled, 'YouCompleteMe')
-"endif
+" " == pathogen exclusions
+" let g:pathogen_disabled = []
+" if MySys() == "windows"
+"     call add(g:pathogen_disabled, 'YouCompleteMe')
+" else
+"     call add(g:pathogen_disabled, 'YouCompleteMe')
+"     call add(g:pathogen_disabled, 'clang_complete')
+"     "call add(g:pathogen_disabled, 'AutoComplPop')
+" endif
+" 
+" " == pathogen infect !
+" call pathogen#infect()
 
-" == pathogen infect !
-call pathogen#infect()
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/Dropbox/Settings/vimfiles/bundle/vundle
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" from github
+
+filetype plugin indent on     " required!
 
 " enable ALT key for Mac
 if MySys() == "mac"
@@ -37,7 +54,6 @@ set number
 set hlsearch
 set incsearch
 set ffs=unix
-set nocp
 set nobackup
 set noswapfile
 nnoremap ; :
