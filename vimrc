@@ -27,7 +27,15 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-" from github
+" from github and vim-scripts
+Bundle 'AutoComplPop'
+Bundle 'EasyGrep'
+Bundle 'mileszs/ack.vim'
+Bundle 'Rip-Rip/clang_complete'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'derekwyatt/vim-fswitch'
+Bundle 'DirDiff.vim'
 
 filetype plugin indent on     " required!
 
@@ -133,6 +141,8 @@ au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl,*.sl SetGLSLFileType
 let g:EasyGrepMode = 2 " track current extension
 let g:EasyGrepRecursive = 1
 let g:EasyGrepIgnoreCase = 1
+let g:EasyGrepCommand = 1
+let g:EasyGrepFileAssociations = $HOME . '/Dropbox/Settings/vimfiles/EasyGrepFileAssociations'
 
 " == NERDTree auto open and auto close
 "autocmd vimenter * NERDTree
