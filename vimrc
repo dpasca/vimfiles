@@ -5,19 +5,6 @@ fun! MySys()
 		return "mac"
 endfun
 
-" " == pathogen exclusions
-" let g:pathogen_disabled = []
-" if MySys() == "windows"
-"     call add(g:pathogen_disabled, 'YouCompleteMe')
-" else
-"     call add(g:pathogen_disabled, 'YouCompleteMe')
-"     call add(g:pathogen_disabled, 'clang_complete')
-"     "call add(g:pathogen_disabled, 'AutoComplPop')
-" endif
-" 
-" " == pathogen infect !
-" call pathogen#infect()
-
 set nocompatible               " be iMproved
 filetype off                   " required!
 
@@ -27,15 +14,32 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-" from github and vim-scripts
+" -- From github and vim-scripts
+" Automatically run autocomplete
 Bundle 'AutoComplPop'
-Bundle 'EasyGrep'
+" Updates tags automatically (needs existing ctags)
+Bundle 'AutoTag'
+"Bundle 'xolox/vim-misc'
+"Bundle 'xolox/vim-easytags'
+"Bundle 'EasyGrep'
+Bundle 'EasyMotion'
+" ..
 Bundle 'mileszs/ack.vim'
+" Example to search & replace afeter a grep: Qdo %s/src/repl
+Bundle 'henrik/vim-qargs'
+" GitGrep for fast grepping
+"Bundle 'henrik/git-grep-vim'
+Bundle 'tjennings/git-grep-vim'
+" clang-driven autocomplete and jump
 Bundle 'Rip-Rip/clang_complete'
+" Find files, MRU, tags, etc.
 Bundle 'kien/ctrlp.vim'
+" File browser
 Bundle 'scrooloose/nerdtree'
+" Switch src/header
 Bundle 'derekwyatt/vim-fswitch'
-Bundle 'DirDiff.vim'
+" ..
+"Bundle 'DirDiff.vim' " NOTE problems with vundle ?
 
 filetype plugin indent on     " required!
 
@@ -80,10 +84,14 @@ set wildchar=<Tab> wildmenu wildmode=full
 " change the mapleader from \ to ,
 let mapleader=","
 
-" == CtrlP tags lookup
+" CtrlP tags lookup
 nnoremap <leader>s :CtrlPTag<CR>
-
-" ,cd to change the dir to the current file
+" <leader>[w]f to find input for GitGrep
+nnoremap <leader>wf :GitGrep -w <cword><CR>
+nnoremap <leader>f :GitGrep<Space>
+" <leader>g to find a tag (C-] is taken over by clang_complete)
+nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
+" <leader>cd to change the dir to the current file
 nnoremap <leader>cd :cd %:p:h<CR> 
 
 " No sound on errors
@@ -168,7 +176,7 @@ function! rc:syncTree()
   endif
 endfunction
 
-autocmd BufEnter * call rc:syncTree()
+" autocmd BufEnter * call rc:syncTree() " slows down ?
 
 " == clang_complete 
 if MySys() == "windows"
