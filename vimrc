@@ -185,7 +185,10 @@ endfunction
 " autocmd BufEnter * call rc:syncTree() " slows down ?
 
 " == clang_complete 
-if MySys() == "windows"
+if MySys() == "mac"
+    let g:clang_use_library = 1
+	let g:clang_library_path = "/usr/lib/"
+elseif MySys() == "windows"
 	let g:clang_exec = '"' . $HOME . '\Dropbox\Settings\clang.exe'
 	let g:clang_user_options = '2> NUL || exit 0"'
     let g:clang_use_library = 1
