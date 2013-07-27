@@ -41,6 +41,9 @@ Bundle 'derekwyatt/vim-fswitch'
 " ..
 "Bundle 'DirDiff.vim' " NOTE problems with vundle ?
 
+" set the language menu (later than this won't work)
+set langmenu=en
+
 filetype plugin indent on     " required!
 
 " enable ALT key for Mac
@@ -54,7 +57,6 @@ set imactivatekey=C-space
 set iminsert=0
 set imsearch=0
 set encoding=utf-8
-set langmenu=en
 set mouse=a
 set ignorecase
 set smartcase
