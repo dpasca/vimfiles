@@ -80,6 +80,10 @@ map <silent> <A-j> :cnext<CR>
 map <silent> <A-k> :cprevious<CR>
 map <silent> <A-c> :cclose<CR>
 
+" select next/prev using C-j/k instead of C-n/p
+inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("k"))
+
 " == hints on wild menu
 set wildchar=<Tab> wildmenu wildmode=full
 
