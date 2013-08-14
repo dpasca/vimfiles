@@ -1,2 +1,6 @@
 .netrwhist
 
+# Custom spell files
+spell/*add*
+spell/*spl*
+
