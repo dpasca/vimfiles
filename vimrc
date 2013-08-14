@@ -21,14 +21,10 @@ Bundle 'AutoComplPop'
 Bundle 'AutoTag'
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-easytags'
-"Bundle 'EasyGrep'
 Bundle 'EasyMotion'
-" ..
-Bundle 'mileszs/ack.vim'
-" Example to search & replace afeter a grep: Qdo %s/src/repl
+" Example to search & replace after a grep: Qdo %s/src/repl
 Bundle 'henrik/vim-qargs'
 " GitGrep for fast grepping
-"Bundle 'henrik/git-grep-vim'
 Bundle 'tjennings/git-grep-vim'
 " clang-driven autocomplete and jump
 Bundle 'Rip-Rip/clang_complete'
@@ -150,13 +146,6 @@ function SetGLSLFileType()
   endfor
 endfunction
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl,*.sl SetGLSLFileType
-
-" == EasyGrep
-let g:EasyGrepMode = 2 " track current extension
-let g:EasyGrepRecursive = 1
-let g:EasyGrepIgnoreCase = 1
-let g:EasyGrepCommand = 1
-let g:EasyGrepFileAssociations = $HOME . '/Dropbox/Settings/vimfiles/EasyGrepFileAssociations'
 
 " == NERDTree auto open and auto close
 "autocmd vimenter * NERDTree
