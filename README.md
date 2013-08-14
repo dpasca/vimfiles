@@ -14,7 +14,7 @@ For Windows I have and hardcoded *vimrc* setting that expects `libclang.dll` in 
 
 * **Vundle**: manages plugins automatically
 * **AutoComplPop**: autocomplete on-the-fly, no need to press ctrl-n/p
-* **AutoTag**: update tags (needs pre-existing `tags` file) *tags* still work better and faster than *clang_complete for me
+* **AutoTag**: update tags (needs pre-existing `tags` file) *tags* still work better and faster than *clang_complete* for me
 * **EasyMotion**: quick jump around a file
 * **GitGrep**: fast grep based on git 
 * **vim-qargs**: useful for mass replace after a grep. Example `Qdo %s/src/repl`
@@ -22,7 +22,7 @@ For Windows I have and hardcoded *vimrc* setting that expects `libclang.dll` in 
 * **ctrlp**: quickly search for file names and recent files (do ctrl-b to cycle). It finds and uses the .git root as a reference
 * **NERDTree**: side bar to browse and open files and dirs
 * **fswitch**: quickly switch between *.cpp* and *.h* (I mapped it to \<leader\>o)
-* **DirDif**: compare dirs recursively with DirDiff \<A dir\> \<B dir\> (currently disabled because of problems with Vundle)
+* **DirDif**: compare dirs recursively with `DirDiff dir1/ dir2/` (currently disabled because of problems with Vundle)
 
 ## Some custom mappings
 
