@@ -93,7 +93,7 @@ let mapleader=","
 " CtrlP tags lookup
 nnoremap <leader>s :CtrlPTag<CR>
 " <leader>[w]f to find input for GitGrep
-nnoremap <leader>wf :GitGrep -w <cword><CR>
+nnoremap <leader>wf :GitGrep -w <cword><Space>
 nnoremap <leader>f :GitGrep<Space>
 " <leader>g to find a tag (C-] is taken over by clang_complete)
 nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
