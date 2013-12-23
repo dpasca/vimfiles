@@ -7,6 +7,12 @@ I work mostly in C++ and my ideal setup is *Visual Studio* with *Visual Assist X
 
 ## Requirements
 
+Here's what the system .vimrc should look like:
+```vimscript
+let $MYVIMFILES="<this repo checkout dir>"
+source $MYVIMFILES/vimrc
+```
+
 *clang_complete* requires *clang* to be installed in the system.
 For Windows I have and hardcoded *vimrc* setting that expects `libclang.dll` in `$HOME\Dropbox\Settings\` (I should move that to `vimfiles\` itself).
 
@@ -22,7 +28,8 @@ For Windows I have and hardcoded *vimrc* setting that expects `libclang.dll` in 
 * **ctrlp**: quickly search for file names and recent files (do ctrl-b to cycle). It finds and uses the .git root as a reference
 * **NERDTree**: side bar to browse and open files and dirs
 * **fswitch**: quickly switch between *.cpp* and *.h* (I mapped it to \<leader\>o)
-* **DirDif**: compare dirs recursively with `DirDiff dir1/ dir2/` (currently disabled because of problems with Vundle)
+* **DirDiff**: compare dirs recursively with `DirDiff dir1/ dir2/` (currently disabled because of problems with Vundle)
+* **vim-fugitive**: Gitting IDE-style (:Gstatus, :Gcommit, etc.)
 
 ## Some custom mappings
 

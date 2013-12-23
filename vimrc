@@ -8,7 +8,8 @@ endfun
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/Dropbox/Settings/vimfiles/bundle/vundle
+set rtp=$MYVIMFILES,$VIM,$VIMRUNTIME
+set rtp+=$MYVIMFILES/bundle/vundle
 call vundle#rc()
 
 " let Vundle manage Vundle
@@ -34,8 +35,10 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 " Switch src/header
 Bundle 'derekwyatt/vim-fswitch'
-" ..
-"Bundle 'DirDiff.vim' " NOTE problems with vundle ?
+" NOTE problems with vundle ?
+Bundle 'DirDiff.vim'
+" For Git
+Bundle 'tpope/vim-fugitive'
 
 " set the language menu (later than this won't work)
 set langmenu=en
@@ -58,7 +61,7 @@ set ignorecase
 set smartcase
 "set nowrap
 syntax on
-syn match Braces display '[{}()\[\]]'
+"syn match Braces display '[{}()\[\]]'
 set hid
 set number
 set hlsearch
@@ -75,6 +78,7 @@ set autoread
 map <silent> <A-j> :cnext<CR>
 map <silent> <A-k> :cprevious<CR>
 map <silent> <A-c> :cclose<CR>
+nnoremap gr :tabprevious<CR>
 
 " select next/prev using C-j/k instead of C-n/p
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("j"))
@@ -147,6 +151,7 @@ function SetGLSLFileType()
 endfunction
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl,*.sl SetGLSLFileType
 
+
 " == NERDTree auto open and auto close
 "autocmd vimenter * NERDTree
 "autocmd vimenter * if !argc() | NERDTree | endif
@@ -176,12 +181,12 @@ endfunction
 " == clang_complete 
 if MySys() == "mac"
     let g:clang_use_library = 1
-	let g:clang_library_path = "/usr/lib/"
+	let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
 elseif MySys() == "windows"
-	let g:clang_exec = '"' . $HOME . '\Dropbox\Settings\clang.exe'
+	let g:clang_exec = '"' . $MYBINS . '/clang.exe'
 	let g:clang_user_options = '2> NUL || exit 0"'
     let g:clang_use_library = 1
-	let g:clang_library_path = $HOME . '\Dropbox\Settings\'
+	let g:clang_library_path = $MYBINS
 endif
 let g:clang_auto_select = 1
 let g:clang_snippets = 1
@@ -205,8 +210,8 @@ set pumheight=20
 "let g:ctrlp_map = '<c-p>'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$|bin$|obj$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.d$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$|bin$|obj|data$',
+  \ 'file': '\v\.(exe|so|dll|o|d|jar|class)$',
   \ }
 
 " == Settings for fswitch
@@ -218,16 +223,21 @@ ab //// //==================================================================
 "================================
 set t_Co=256
 color candycode
+
 "= color matching braces
-syn match Braces display '[{}()\[\]]'
-hi Braces guifg=yellow
+"syn match Braces display '[{}()\[\]]'
+if has('autocmd') && has('syntax')
+    au VimEnter * au Syntax * syn match Braces display '[{}()\[\]<>]'
+endif
+hi Braces guifg=#a0ff60
 
 if MySys() == "mac"
     set gfn=Andale\ Mono:h12 " Mac
     "set gfn=Menlo:h14
 elseif MySys() == "windows"
-    "set gfn=MS\ Gothic:h10		" Windows
-    set gfn=Bitstream\ Vera\ Sans\ Mono:h9
+    "set gfn=MS\ Gothic:h10
+    "set gfn=Bitstream\ Vera\ Sans\ Mono:h9
+    set gfn=Consolas:h9
 elseif MySys() == "linux"
     "set gfn=Monospace\ 10
 endif
