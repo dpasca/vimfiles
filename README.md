@@ -43,3 +43,16 @@ NOTE: my \<leader\> is set to `,` (comma).
 * A-j/k: cycle the next and previous entry in the quick fix window
 * A-c: close the quick fix window
 * C-j/k: cycle autocompletion entries, instead of using C-n/p
+
+## Extras
+### My .ctags
+This is what my .ctags config file looks like (that I put locally in the the root of the git repo)
+```bash
+--recurse=yes
+--tag-relative=yes
+--exclude=.git
+--exclude=externals
+--c++-kinds=+p
+--fields=+iaS
+--extra=+q
+```
