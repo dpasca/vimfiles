@@ -20,9 +20,9 @@ Bundle 'gmarik/vundle'
 Bundle 'AutoComplPop'
 " Updates tags automatically (needs existing ctags)
 Bundle 'AutoTag'
-"Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-easytags'
-Bundle 'EasyMotion'
+Bundle 'xolox/vim-colorscheme-switcher'
 " Example to search & replace after a grep: Qdo %s/src/repl
 Bundle 'henrik/vim-qargs'
 " GitGrep for fast grepping
@@ -151,43 +151,13 @@ function SetGLSLFileType()
 endfunction
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl,*.sl SetGLSLFileType
 
-
-" == NERDTree auto open and auto close
-"autocmd vimenter * NERDTree
-"autocmd vimenter * if !argc() | NERDTree | endif
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" == sync NERDTree to current file (http://superuser.com/questions/195022/vim-how-to-synchronize-nerdtree-with-current-opened-tab-file-path)
-" returns true iff is NERDTree open/active
-function! rc:isNTOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" returns true iff focused window is NERDTree window
-function! rc:isNTFocused()     
-  return -1 != match(expand('%'), 'NERD_Tree') 
-endfunction 
-
-" calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
-function! rc:syncTree()
-  if &modifiable && rc:isNTOpen() && !rc:isNTFocused() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" autocmd BufEnter * call rc:syncTree() " slows down ?
-
 " == clang_complete 
-if MySys() == "mac"
-    let g:clang_use_library = 1
-	let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-elseif MySys() == "windows"
-	let g:clang_exec = '"' . $MYBINS . '/clang.exe'
+if MySys() == "windows"
+	let g:clang_exec = '"' . $MYCLANGLIBPATH . '/clang.exe'
 	let g:clang_user_options = '2> NUL || exit 0"'
-    let g:clang_use_library = 1
-	let g:clang_library_path = $MYBINS
 endif
+let g:clang_use_library = 1
+let g:clang_library_path = $MYCLANGLIBPATH
 let g:clang_auto_select = 1
 let g:clang_snippets = 1
 let g:clang_conceal_snippets = 1
@@ -196,7 +166,7 @@ let g:clang_snippets_engine = "clang_complete"
 "let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
-let g:clang_user_options = '-std=c++11'
+"let g:clang_user_options = '-std=c++11'
 
 set conceallevel=2
 set concealcursor=vin

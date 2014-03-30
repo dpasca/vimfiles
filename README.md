@@ -1,15 +1,18 @@
 # dpasca's vimfiles
 
-## Overview
-
-I work mostly in C++ and my ideal setup is *Visual Studio* with *Visual Assist X* and *ViEmu*.
-<br>This setup is an attempt to get close to that. Not there yet, but that's the goal.
-
 ## Requirements
 
-Here's what the system .vimrc should look like:
+Here's a sample .vimrc for Mac:
 ```vimscript
-let $MYVIMFILES="<this repo checkout dir>"
+let $MYCLANGLIBPATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+let $MYVIMFILES="~/Dropbox/Settings/vimfiles"
+source $MYVIMFILES/vimrc
+```
+
+...and for Windows:
+```vimscript
+let $MYCLANGLIBPATH="C:/Program Files (x86)/LLVM/bin"
+let $MYVIMFILES="$HOME/Dropbox/Settings/vimfiles"
 source $MYVIMFILES/vimrc
 ```
 
@@ -21,14 +24,14 @@ For Windows I have and hardcoded *vimrc* setting that expects `libclang.dll` in 
 * **Vundle**: manages plugins automatically
 * **AutoComplPop**: autocomplete on-the-fly, no need to press ctrl-n/p
 * **AutoTag**: update tags (needs pre-existing `tags` file) *tags* still work better and faster than *clang_complete* for me
-* **EasyMotion**: quick jump around a file
+* **vim-colorscheme-switcher**: quickly cycle color scheme with F8
 * **GitGrep**: fast grep based on git 
 * **vim-qargs**: useful for mass replace after a grep. Example `Qdo %s/src/repl`
 * **clang_complete**: Intellisense-like C++ autocompletion 
 * **ctrlp**: quickly search for file names and recent files (do ctrl-b to cycle). It finds and uses the .git root as a reference
 * **NERDTree**: side bar to browse and open files and dirs
 * **fswitch**: quickly switch between *.cpp* and *.h* (I mapped it to \<leader\>o)
-* **DirDiff**: compare dirs recursively with `DirDiff dir1/ dir2/` (currently disabled because of problems with Vundle)
+* **DirDiff**: compare dirs recursively with `DirDiff dir1/ dir2/` (has windowing problems when vim-fugitive is installed)
 * **vim-fugitive**: Gitting IDE-style (:Gstatus, :Gcommit, etc.)
 
 ## Some custom mappings
