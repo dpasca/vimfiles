@@ -16,8 +16,7 @@ let $MYVIMFILES="$HOME/Dropbox/Settings/vimfiles"
 source $MYVIMFILES/vimrc
 ```
 
-*clang_complete* requires *clang* to be installed in the system.
-For Windows I have and hardcoded *vimrc* setting that expects `libclang.dll` in `$HOME\Dropbox\Settings\` (I should move that to `vimfiles\` itself).
+$MYCLANGLIBPATH is required to get *clang_complete* to work.
 
 ## The plugins
 
