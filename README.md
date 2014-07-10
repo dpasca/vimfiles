@@ -32,6 +32,8 @@ $MYCLANGLIBPATH is required to get *clang_complete* to work.
 * **fswitch**: quickly switch between *.cpp* and *.h* (I mapped it to \<leader\>o)
 * **DirDiff**: compare dirs recursively with `DirDiff dir1/ dir2/` (has windowing problems when vim-fugitive is installed)
 * **vim-fugitive**: Gitting IDE-style (:Gstatus, :Gcommit, etc.)
+* **vim-cpp**: additional vim c++ syntax highlighting
+* **vim-gutter**: gutter with git changes. Also for staging and reverting with <leader>hs / hs
 
 ## Some custom mappings
 

@@ -10,43 +10,49 @@ filetype off                   " required!
 
 set rtp=$MYVIMFILES,$VIM,$VIMRUNTIME
 set rtp+=$MYVIMFILES/bundle/vundle
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " -- From github and vim-scripts
 " Automatically run autocomplete
-Bundle 'AutoComplPop'
+Plugin 'AutoComplPop'
 " Updates tags automatically (needs existing ctags)
-Bundle 'AutoTag'
-Bundle 'xolox/vim-misc'
-"Bundle 'xolox/vim-easytags'
-Bundle 'xolox/vim-colorscheme-switcher'
+Plugin 'AutoTag'
+Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-colorscheme-switcher'
 " Example to search & replace after a grep: Qdo %s/src/repl
-Bundle 'henrik/vim-qargs'
+Plugin 'henrik/vim-qargs'
 " GitGrep for fast grepping
-Bundle 'tjennings/git-grep-vim'
+Plugin 'tjennings/git-grep-vim'
 " clang-driven autocomplete and jump
-Bundle 'Rip-Rip/clang_complete'
+Plugin 'Rip-Rip/clang_complete'
 " Find files, MRU, tags, etc.
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 " File browser
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " Switch src/header
-Bundle 'derekwyatt/vim-fswitch'
+Plugin 'derekwyatt/vim-fswitch'
 " NOTE problems with vundle ?
-Bundle 'DirDiff.vim'
+"Plugin 'DirDiff.vim'
 " For Git
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
+" Improved syntax highlight for C++
+Plugin 'octol/vim-cpp-enhanced-highlight'
+" Git gutter, with stage and revert in <leader>hs / hr
+Plugin 'airblade/vim-gitgutter'
 
 " set the language menu (later than this won't work)
 set langmenu=en
 
-filetype plugin indent on     " required!
+call vundle#end()            " required
+filetype plugin indent on    " required!
 
 " enable ALT key for Mac
-if MySys() == "mac"
+"if MySys() == "mac"
+if exists('+macmeta')
     set macmeta
 endif
 
