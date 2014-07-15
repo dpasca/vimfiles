@@ -204,8 +204,8 @@ ab //// //==================================================================
 set t_Co=256
 color candycode
 
-" Remove the newbie-bar on top
-set guioptions-=T
+" No toolbar, no menu bar, no scroll bars
+set guioptions=i
 
 "= color matching braces
 "syn match Braces display '[{}()\[\]]'
