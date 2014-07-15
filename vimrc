@@ -200,6 +200,9 @@ ab //// //==================================================================
 set t_Co=256
 color candycode
 
+" Remove the newbie-bar on top
+set guioptions-=T
+
 "= color matching braces
 "syn match Braces display '[{}()\[\]]'
 if has('autocmd') && has('syntax')
