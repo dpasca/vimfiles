@@ -132,8 +132,12 @@ set smartindent
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
  
 " == persistent undo
-"call mkdir($HOME . "/.vim")
-"call mkdir($HOME . "/.vim/undodir")
+if !isdirectory($HOME . "/.vim")
+    call mkdir($HOME . "/.vim", "p")
+endif
+if !isdirectory($HOME . "/.vim/undodir")
+    call mkdir($HOME . "/.vim/undodir", "p")
+endif
 set undodir=$HOME/.vim/undodir
 set undofile
 set undolevels=5000 "maximum number of changes that can be undone
