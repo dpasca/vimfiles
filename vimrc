@@ -166,7 +166,7 @@ function SetGLSLFileType()
     endif
   endfor
 endfunction
-au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl,*.sl SetGLSLFileType
+au BufNewFile,BufRead *.frag,*.vert,*.tesc,*.tese*.fp,*.vp,*.glsl,*.sl SetGLSLFileType
 
 " == clang_complete 
 if MySys() == "windows"
