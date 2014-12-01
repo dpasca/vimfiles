@@ -193,6 +193,12 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$|bin$|obj|data$',
   \ 'file': '\v\.(exe|so|dll|o|d|jar|class)$',
   \ }
+if MySys() == "windows"
+    " temp solution, since git listing doesn't seem to work recently
+    let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
+else
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+endif
 
 " == Settings for fswitch
 nmap <silent> <Leader>o :FSHere<cr>
