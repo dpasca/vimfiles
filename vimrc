@@ -51,7 +51,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required!
 
 " enable ALT key for Mac
-"if MySys() == "mac"
 if exists('+macmeta')
     set macmeta
 endif
@@ -80,10 +79,18 @@ nnoremap ; :
 " automatically refresh changed files
 set autoread
 
-" == windowing
-map <silent> <A-j> :cnext<CR>
-map <silent> <A-k> :cprevious<CR>
-map <silent> <A-c> :cclose<CR>
+" == windowing A-j/k/c to select and close the QuixFix window
+" enable ALT key for Mac
+if exists('+macmeta') && !has("gui_running")
+    " special case for when running in OS X terminal (iTerm 2)
+    map <silent> ∆ :cnext<CR>
+    map <silent> ˚ :cprevious<CR>
+    map <silent> ç :cclose<CR>
+else
+    map <silent> <A-j> :cnext<CR>
+    map <silent> <A-k> :cprevious<CR>
+    map <silent> <A-c> :cclose<CR>
+endif
 nnoremap gr :tabprevious<CR>
 
 " select next/prev using C-j/k instead of C-n/p
