@@ -243,12 +243,26 @@ elseif MySys() == "linux"
     "set gfn=Monospace\ 10
 endif
 
+" Window sizing
+" see http://vim.wikia.com/wiki/Maximize_or_set_initial_window_size
 if has("gui_running")
-    set columns=170 lines=56
+    if MySys() == "windows"
+        " Use ~x on an English Windows version or ~n for French.
+        au GUIEnter * simalt ~x
+    else
+        set lines=999 columns=999
+    endif
 else
-    set columns=170
+    " This is console Vim.
+    if exists("+lines")
+      set lines=56
+    endif
+
+    if exists("+columns")
+      set columns=170
+    endif
 endif
- 
+
 " == Fix the swap file issue with Win 7
 if MySys() == "windows"
     set dir=$TEMP
