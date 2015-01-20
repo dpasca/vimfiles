@@ -71,10 +71,11 @@ set hid
 set number
 set hlsearch
 set incsearch
-set ffs=unix
+set ffs=unix,dos
 set nobackup
 set noswapfile
 nnoremap ; :
+set scrolloff=1 " keep 1 line below and above the cursor
 
 " automatically refresh changed files
 set autoread
