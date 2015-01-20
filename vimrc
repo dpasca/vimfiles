@@ -169,6 +169,10 @@ function SetGLSLFileType()
 endfunction
 au BufNewFile,BufRead *.frag,*.vert,*.tesc,*.tese*.fp,*.vp,*.glsl,*.sl SetGLSLFileType
 
+" == enhanced cpp syntax highlight options
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+
 " == clang_complete 
 if MySys() == "windows"
 	let g:clang_exec = '"' . $MYCLANGLIBPATH . '/clang.exe'
