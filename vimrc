@@ -43,6 +43,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 " Git gutter, with stage and revert in <leader>hs / hr
 Plugin 'airblade/vim-gitgutter'
+" Hexmode
+Plugin 'fidian/hexmode'
+Plugin 'Valloric/vim-operator-highlight'
+let g:ophigh_color_gui = "#F6FF00"
 
 " set the language menu (later than this won't work)
 set langmenu=en
