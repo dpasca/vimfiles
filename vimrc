@@ -262,15 +262,15 @@ if has("gui_running")
     else
         set lines=999 columns=999
     endif
-else
-    " This is console Vim.
-    if exists("+lines")
-      set lines=56
-    endif
-
-    if exists("+columns")
-      set columns=170
-    endif
+"else
+"    " This is console Vim.
+"    if exists("+lines")
+"      set lines=56
+"    endif
+"
+"    if exists("+columns")
+"      set columns=170
+"    endif
 endif
 
 " == Fix the swap file issue with Win 7
