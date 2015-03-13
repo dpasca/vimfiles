@@ -97,7 +97,10 @@ else
     map <silent> <A-k> :cprevious<CR>
     map <silent> <A-c> :cclose<CR>
 endif
+" additional tab nagivation with ctrl-j/k or gr
 nnoremap gr :tabprevious<CR>
+nnoremap <c-h> :tabprevious<CR>
+nnoremap <c-l> :tabnext<CR>
 
 " select next/prev using C-j/k instead of C-n/p
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("j"))
