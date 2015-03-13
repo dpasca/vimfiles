@@ -229,6 +229,8 @@ ab //// //==================================================================
 "================================
 set t_Co=256
 color candycode
+hi Search guibg=brown guifg=NONE
+hi Normal guibg=#121212
 
 " No toolbar, no menu bar, no scroll bars
 set guioptions=i
