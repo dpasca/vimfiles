@@ -243,12 +243,12 @@ endif
 hi Braces guifg=#a0ff60
 
 if MySys() == "mac"
-    set gfn=Andale\ Mono:h12 " Mac
+    set gfn=Menlo:h10 " Mac
     "set gfn=Menlo:h14
 elseif MySys() == "windows"
     "set gfn=MS\ Gothic:h10
     "set gfn=Bitstream\ Vera\ Sans\ Mono:h9
-    set gfn=Consolas:h9
+    set gfn=Inconsolata:h9
 elseif MySys() == "linux"
     "set gfn=Monospace\ 10
 endif
