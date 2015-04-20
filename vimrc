@@ -46,7 +46,6 @@ Plugin 'airblade/vim-gitgutter'
 " Hexmode
 Plugin 'fidian/hexmode'
 Plugin 'Valloric/vim-operator-highlight'
-let g:ophigh_color_gui = "#F6FF00"
 
 " set the language menu (later than this won't work)
 set langmenu=en
@@ -227,21 +226,35 @@ nmap <silent> <Leader>o :FSHere<cr>
 ab //// //==================================================================
 
 "================================
-set t_Co=256
-color candycode
-hi Search guibg=brown guifg=NONE
-hi Normal guibg=#121212
-
 " No toolbar, no menu bar, no scroll bars
 set guioptions=i
+
+"================================
+" COLORS
+set t_Co=256
+color candycode
+" color molokai
 
 "= color matching braces
 "syn match Braces display '[{}()\[\]]'
 if has('autocmd') && has('syntax')
     au VimEnter * au Syntax * syn match Braces display '[{}()\[\]<>]'
 endif
-hi Braces guifg=#a0ff60
 
+hi Braces guifg=#a0ff60
+hi Search guibg=brown guifg=NONE
+hi Normal guibg=#121212
+" for vim op highlight plugin
+let g:ophigh_color_gui = "#F6FF00"
+
+"=== Morning set
+"color default
+"hi Braces guifg=#900000
+"hi Normal guibg=#f0f0f0
+"let g:ophigh_color_gui = "#a00000"
+"set gfn=Lucida\ Console:h8
+
+"================================
 if MySys() == "mac"
     set gfn=Menlo:h10 " Mac
     "set gfn=Menlo:h14
