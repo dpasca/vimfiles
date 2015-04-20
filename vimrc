@@ -13,7 +13,7 @@ set rtp+=$MYVIMFILES/bundle/vundle
 call vundle#begin()
 
 " let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/vundle', {'name': '$MYVIMFILES/bundle/vundle'}
 
 " -- From github and vim-scripts
 " Automatically run autocomplete
