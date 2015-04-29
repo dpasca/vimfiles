@@ -20,8 +20,8 @@ Plugin 'gmarik/vundle', {'name': '$MYVIMFILES/bundle/vundle'}
 Plugin 'AutoComplPop'
 " Updates tags automatically (needs existing ctags)
 Plugin 'AutoTag'
+" Switch color schemes with F8
 Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-colorscheme-switcher'
 " Example to search & replace after a grep: Qdo %s/src/repl
 Plugin 'henrik/vim-qargs'
@@ -35,17 +35,18 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 " Switch src/header
 Plugin 'derekwyatt/vim-fswitch'
-" NOTE problems with vundle ?
+" Improved syntax highlight for C++
+Plugin 'octol/vim-cpp-enhanced-highlight'
+" Operators highlight
+Plugin 'Valloric/vim-operator-highlight'
+" NOTE problems with vim-fugitive ?
 "Plugin 'DirDiff.vim'
 " For Git
 Plugin 'tpope/vim-fugitive'
-" Improved syntax highlight for C++
-Plugin 'octol/vim-cpp-enhanced-highlight'
 " Git gutter, with stage and revert in <leader>hs / hr
 Plugin 'airblade/vim-gitgutter'
 " Hexmode
 Plugin 'fidian/hexmode'
-Plugin 'Valloric/vim-operator-highlight'
 
 " set the language menu (later than this won't work)
 set langmenu=en
