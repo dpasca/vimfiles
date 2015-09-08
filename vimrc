@@ -46,6 +46,8 @@ Plugin 'airblade/vim-gitgutter'
 " Hexmode
 Plugin 'fidian/hexmode'
 Plugin 'Valloric/vim-operator-highlight'
+" Expand and restrict regions progressively
+Plugin 'terryma/vim-expand-region'
 
 " set the language menu (later than this won't work)
 set langmenu=en
@@ -120,6 +122,11 @@ nnoremap <leader>f :GitGrep<Space>
 nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
 " <leader>cd to change the dir to the current file
 nnoremap <leader>cd :cd %:p:h<CR> 
+
+" setup for vim-expand-region
+" http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " No sound on errors
 set noerrorbells visualbell t_vb=
