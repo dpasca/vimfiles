@@ -43,6 +43,8 @@ Plugin 'Valloric/vim-operator-highlight'
 "Plugin 'DirDiff.vim'
 " For Git
 Plugin 'tpope/vim-fugitive'
+" Add commands like Remove, Move, Find
+Plugin 'tpope/vim-eunuch'
 " Git gutter, with stage and revert in <leader>hs / hr
 Plugin 'airblade/vim-gitgutter'
 " Hexmode
