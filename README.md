@@ -24,16 +24,18 @@ $MYCLANGLIBPATH is required to get *clang_complete* to work.
 * **AutoComplPop**: autocomplete on-the-fly, no need to press ctrl-n/p
 * **AutoTag**: update tags (needs pre-existing `tags` file) *tags* still work better and faster than *clang_complete* for me
 * **vim-colorscheme-switcher**: quickly cycle color scheme with F8
-* **GitGrep**: fast grep based on git 
 * **vim-qargs**: useful for mass replace after a grep. Example `Qdo %s/src/repl`
+* **git-grep-vim**: fast grep based on git 
 * **clang_complete**: Intellisense-like C++ autocompletion 
 * **ctrlp**: quickly search for file names and recent files (do ctrl-b to cycle). It finds and uses the .git root as a reference
-* **NERDTree**: side bar to browse and open files and dirs
-* **fswitch**: quickly switch between *.cpp* and *.h* (I mapped it to \<leader\>o)
+* **nerdtree**: side bar to browse and open files and dirs
+* **vim-fswitch**: quickly switch between *.cpp* and *.h* (I mapped it to \<leader\>o)
+* **vim-cpp-enhanced-highlight**: improved syntax highlight for C++
+* **vim-operator-highlight**: operators highlight
 * **DirDiff**: compare dirs recursively with `DirDiff dir1/ dir2/` (has windowing problems when vim-fugitive is installed)
 * **vim-fugitive**: Gitting IDE-style (:Gstatus, :Gcommit, etc.)
-* **vim-cpp**: additional vim c++ syntax highlighting
 * **vim-gutter**: gutter with git changes. Jump with ]c [c, stage and revert with <leader>hs / hr
+* **hexmode**: simplified hex editing
 
 ## Some custom mappings
 
