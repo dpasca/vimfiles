@@ -114,7 +114,7 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("k"))
 set wildchar=<Tab> wildmenu wildmode=full
 
 " change the mapleader from \ to ,
-let mapleader=","
+let mapleader="\<Space>"
 
 " CtrlP tags lookup
 nnoremap <leader>s :CtrlPTag<CR>
