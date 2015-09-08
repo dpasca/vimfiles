@@ -190,6 +190,7 @@ let g:cpp_experimental_template_highlight = 1
 " == clang_complete 
 if MySys() == "windows"
 	let g:clang_exec = '"' . $MYCLANGLIBPATH . '/clang.exe'
+	let g:clang_library_path = '"' . $MYCLANGLIBPATH . '"'
 	let g:clang_user_options = '2> NUL || exit 0"'
 endif
 let g:clang_use_library = 1
