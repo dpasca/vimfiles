@@ -13,10 +13,10 @@ set rtp+=$MYVIMFILES/bundle/vundle
 call vundle#begin()
 
 " let Vundle manage Vundle
-Plugin 'gmarik/vundle', {'name': '$MYVIMFILES/bundle/vundle'}
+"Plugin 'VundleVim/vundle', {'name': '$MYVIMFILES/bundle/vundle'}
 
 " -- From github and vim-scripts
-" Automatically run autocomplete
+" Automatically run autocomplete. No need for ctrl-n/p
 Plugin 'AutoComplPop'
 " Updates tags automatically (needs existing ctags)
 Plugin 'AutoTag'
@@ -93,8 +93,8 @@ set autoread
 " enable ALT key for Mac
 if exists('+macmeta') && !has("gui_running")
     " special case for when running in OS X terminal (iTerm 2)
-    map <silent> âˆ† :cnext<CR>
-    map <silent> Ëš :cprevious<CR>
+    map <silent> âˆ?:cnext<CR>
+    map <silent> Ë?:cprevious<CR>
     map <silent> Ã§ :cclose<CR>
 else
     map <silent> <A-j> :cnext<CR>
@@ -191,10 +191,14 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
 " == clang_complete 
+let g:clang_user_options = '-std=c++11'
 if MySys() == "windows"
-	let g:clang_exec = '"' . $MYCLANGLIBPATH . '/clang.exe'
-	let g:clang_library_path = '"' . $MYCLANGLIBPATH . '"'
-	let g:clang_user_options = '2> NUL || exit 0"'
+    " NOTE: https://github.com/Rip-Rip/clang_complete/wikia
+    "   docs say to put " ad begin of clang_exec and at end of
+    "   clang_user_options but it's no longer working
+    let g:clang_exec = $MYCLANGLIBPATH . '/clang.exe'
+    let g:clang_library_path = '"' . $MYCLANGLIBPATH . '"'
+    let g:clang_user_options .= '2> NUL || exit 0'
 endif
 let g:clang_use_library = 1
 let g:clang_library_path = $MYCLANGLIBPATH
@@ -206,7 +210,6 @@ let g:clang_snippets_engine = "clang_complete"
 "let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
-"let g:clang_user_options = '-std=c++11'
 
 set conceallevel=2
 set concealcursor=vin
