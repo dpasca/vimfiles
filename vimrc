@@ -47,6 +47,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-eunuch'
 " Git gutter, with stage and revert in <leader>hs / hr
 Plugin 'airblade/vim-gitgutter'
+" Improved status line
+Plugin 'bling/vim-airline'
 " Hexmode
 Plugin 'fidian/hexmode'
 " Expand and restrict regions progressively
@@ -210,6 +212,14 @@ let g:clang_snippets_engine = "clang_complete"
 "let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
+
+" == vim-airline
+" no warnings about trailing, because it includes empty lines (!)
+"let g:airline#extensions#whitespace#checks = [ 'indent' ]
+let g:airline_section_a = '' " no mode
+let g:airline_section_x = '' " no file type
+let g:airline_section_y = '' " no file encoding/format
+let g:airline_section_z = '' " no file location
 
 set conceallevel=2
 set concealcursor=vin
