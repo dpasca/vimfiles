@@ -287,7 +287,7 @@ elseif MySys() == "windows"
     "set gfn=Bitstream\ Vera\ Sans\ Mono:h9
     set gfn=Inconsolata:h9
 elseif MySys() == "linux"
-    "set gfn=Monospace\ 10
+    set gfn=DejaVu Sans Mono\ 11
 endif
 
 " Window sizing
