@@ -1,8 +1,10 @@
 fun! MySys()
-	if has("win32")
-		return "windows"
-	else
-		return "mac"
+    if has("win32")
+        return "windows"
+    elseif has("unix")
+        return "linux"
+    else
+        return "mac"
 endfun
 
 set nocompatible               " be iMproved
