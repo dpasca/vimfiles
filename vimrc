@@ -128,6 +128,9 @@ nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
 " <leader>cd to change the dir to the current file
 nnoremap <leader>cd :cd %:p:h<CR> 
 
+" shortcut to quickly find a file in NERDTree
+nmap <leader>p :NERDTreeFind<CR>
+
 " setup for vim-expand-region
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 vmap v <Plug>(expand_region_expand)
