@@ -224,6 +224,10 @@ let g:airline_section_x = '' " no file type
 let g:airline_section_y = '' " no file encoding/format
 let g:airline_section_z = '' " no file location
 
+" ==
+let g:gitgutter_grep_command='grep -e'
+
+" ==
 set conceallevel=2
 set concealcursor=vin
 " Complete options (disable preview scratch window,
