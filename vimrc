@@ -41,6 +41,8 @@ Plugin 'derekwyatt/vim-fswitch'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 " Operators highlight
 Plugin 'Valloric/vim-operator-highlight'
+" Quick list and location list toggler
+Plugin 'Valloric/ListToggle'
 " NOTE problems with vim-fugitive ?
 "Plugin 'DirDiff.vim'
 " For Git
@@ -105,6 +107,11 @@ else
     map <silent> <A-k> :cprevious<CR>
     map <silent> <A-c> :cclose<CR>
 endif
+
+" shortcuts for ListToggle
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+
 " additional tab nagivation with ctrl-j/k or gr
 nnoremap gr :tabprevious<CR>
 nnoremap <c-h> :tabprevious<CR>
