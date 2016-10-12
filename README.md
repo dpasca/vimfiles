@@ -55,7 +55,7 @@ NOTE: my \<leader\> is set to `,` (comma).
 This is what my .ctags config file looks like (that I put locally in the the root of the git repo)
 ```bash
 --recurse=yes
---tag-relative=yes
+--tag-relative=no
 --exclude=.git
 --exclude=externals
 --c++-kinds=+p
