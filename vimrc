@@ -256,6 +256,9 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 " == Settings for fswitch
 nmap <silent> <Leader>o :FSHere<cr>
 
+" F9 launches python ( http://stackoverflow.com/a/18948530 )
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+
 " == Useful abbreviations
 ab //// //==================================================================
 
