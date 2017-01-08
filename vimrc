@@ -21,57 +21,63 @@ if (has("termguicolors"))
 endif
 
 set rtp=$MYVIMFILES,$VIM,$VIMRUNTIME
-set rtp+=$MYVIMFILES/bundle/vundle
-call vundle#begin()
-
-" let Vundle manage Vundle
-"Plugin 'VundleVim/vundle', {'name': '$MYVIMFILES/bundle/vundle'}
+"let g:plug_threads = 1
+call plug#begin($HOME . '/.vim/plugged')
 
 " -- From github and vim-scripts
 " Automatically run autocomplete. No need for ctrl-n/p
-Plugin 'AutoComplPop'
+Plug 'AutoComplPop'
 " Updates tags automatically (needs existing ctags)
-Plugin 'AutoTag'
+Plug 'AutoTag'
 " Switch color schemes with F8
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-colorscheme-switcher'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-colorscheme-switcher'
+"
+Plug 'morhetz/gruvbox'
 " Example to search & replace after a grep: Qdo %s/src/repl
-Plugin 'henrik/vim-qargs'
+Plug 'henrik/vim-qargs'
 " GitGrep for fast grepping
-Plugin 'tjennings/git-grep-vim'
-" clang-driven autocomplete and jump
-Plugin 'Rip-Rip/clang_complete'
+Plug 'tjennings/git-grep-vim'
+"" clang-driven autocomplete and jump
+"Plug 'Rip-Rip/clang_complete'
+" Syntax checker
+"Plug 'scrooloose/syntastic'
 " Find files, MRU, tags, etc.
-Plugin 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+" List modified files in a git repo
+Plug 'jasoncodes/ctrlp-modified.vim'
 " File browser
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Switch src/header
-Plugin 'derekwyatt/vim-fswitch'
-" Improved syntax highlight for C++
-Plugin 'octol/vim-cpp-enhanced-highlight'
+Plug 'derekwyatt/vim-fswitch'
 " Operators highlight
-Plugin 'Valloric/vim-operator-highlight'
+Plug 'Valloric/vim-operator-highlight'
+" Improved syntax highlight for C++
+Plug 'octol/vim-cpp-enhanced-highlight'
 " Quick list and location list toggler
-Plugin 'Valloric/ListToggle'
+Plug 'Valloric/ListToggle'
 " NOTE problems with vim-fugitive ?
-"Plugin 'DirDiff.vim'
+"Plug 'DirDiff.vim'
 " For Git
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Add commands like Remove, Move, Find
-Plugin 'tpope/vim-eunuch'
+Plug 'tpope/vim-eunuch'
 " Git gutter, with stage and revert in <leader>hs / hr
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Improved status line
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 " Hexmode
-Plugin 'fidian/hexmode'
+" Plug 'fidian/hexmode'
 " Expand and restrict regions progressively
-Plugin 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
+" #ifdef highlighting
+Plug 'vim-scripts/ifdef-highlighting'
 
 " set the language menu (later than this won't work)
 set langmenu=en
 
-call vundle#end()            " required
+call plug#end()            " required
+
 filetype plugin indent on    " required!
 
 " enable ALT key for Mac
