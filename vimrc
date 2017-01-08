@@ -324,7 +324,12 @@ if has("gui_running")
 endif
 
 " == Fix the swap file issue with Win 7
-if MySys() == "windows"
-    set dir=$TEMP
-endif
+"if MySys() == "windows"
+"    set dir=$TEMP
+"endif
+
+" DirectX
+"if has("directx") && $VIM_USE_DIRECTX != '0'
+"    set renderoptions=type:directx,geom:1,taamode:1
+"endif
 
