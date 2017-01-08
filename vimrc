@@ -71,7 +71,9 @@ endif
 
 " == usability, IME, etc
 let $LANG = 'en'
-set imactivatekey=C-space
+if !has('nvim')
+    set imactivatekey=C-space
+endif
 set iminsert=0
 set imsearch=0
 set encoding=utf-8
