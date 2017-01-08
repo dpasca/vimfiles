@@ -246,18 +246,12 @@ set completeopt=menu,menuone
 set pumheight=20
 
 " == Settings for CtrlP Finder
-"let g:ctrlp_map = '<c-p>'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$|bin$|obj|data$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$|bin$|obj|data$|Debug$|Release$|RelWithDebInfo$',
   \ 'file': '\v\.(exe|so|dll|o|d|jar|class)$',
   \ }
-if MySys() == "windows"
-    " temp solution, since git listing doesn't seem to work recently
-    let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
-else
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-endif
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 " == Settings for fswitch
 nmap <silent> <Leader>o :FSHere<cr>
