@@ -293,14 +293,14 @@ let g:ophigh_color_gui = "#F6FF00"
 
 "================================
 if MySys() == "mac"
-    set gfn=Menlo:h10 " Mac
+    set gfn=Consolas:h10
     "set gfn=Menlo:h14
 elseif MySys() == "windows"
     "set gfn=MS\ Gothic:h10
     "set gfn=Bitstream\ Vera\ Sans\ Mono:h9
     set gfn=Inconsolata:h9
 elseif MySys() == "linux"
-    set gfn=DejaVu\ Sans\ Mono\ 11
+    set gfn=DejaVu\ Sans\ Mono\ 10
 endif
 
 " Window sizing
