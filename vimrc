@@ -10,6 +10,16 @@ endfun
 set nocompatible               " be iMproved
 filetype off                   " required!
 
+if MySys() == "windows"
+"    set shell=cmd
+"    set shellcmdflag=/c
+"    set shellslash " default to forward slash, like for Unix
+endif
+
+if (has("termguicolors"))
+    set termguicolors
+endif
+
 set rtp=$MYVIMFILES,$VIM,$VIMRUNTIME
 set rtp+=$MYVIMFILES/bundle/vundle
 call vundle#begin()
