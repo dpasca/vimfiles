@@ -18,24 +18,59 @@ source $MYVIMFILES/vimrc
 
 $MYCLANGLIBPATH is required to get *clang_complete* to work.
 
-## The plugins
+## Plugins quick overview
 
-* **Vundle**: manages plugins automatically
-* **AutoComplPop**: autocomplete on-the-fly, no need to press ctrl-n/p
-* **AutoTag**: update tags (needs pre-existing `tags` file) *tags* still work better and faster than *clang_complete* for me
-* **vim-colorscheme-switcher**: quickly cycle color scheme with F8
-* **vim-qargs**: useful for mass replace after a grep. Example `Qdo %s/src/repl`
-* **git-grep-vim**: fast grep based on git 
-* **clang_complete**: Intellisense-like C++ autocompletion 
-* **ctrlp**: quickly search for file names and recent files (do ctrl-b to cycle). It finds and uses the .git root as a reference
-* **nerdtree**: side bar to browse and open files and dirs
-* **vim-fswitch**: quickly switch between *.cpp* and *.h* (I mapped it to \<leader\>o)
-* **vim-cpp-enhanced-highlight**: improved syntax highlight for C++
-* **vim-operator-highlight**: operators highlight
-* **DirDiff**: compare dirs recursively with `DirDiff dir1/ dir2/` (has windowing problems when vim-fugitive is installed)
-* **vim-fugitive**: Gitting IDE-style (:Gstatus, :Gcommit, etc.)
-* **vim-gutter**: gutter with git changes. Jump with ]c [c, stage and revert with <leader>hs / hr
-* **hexmode**: simplified hex editing
+```vimscript
+" Automatically run autocomplete. No need for ctrl-n/p
+Plug 'eparreno/vim-l9'
+Plug 'othree/vim-autocomplpop'
+
+" Switch color schemes with F8
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-colorscheme-switcher'
+"
+Plug 'morhetz/gruvbox'
+" Example to search & replace after a grep: Qdo %s/src/repl
+Plug 'henrik/vim-qargs'
+" GitGrep for fast grepping
+Plug 'tjennings/git-grep-vim'
+"" clang-driven autocomplete and jump
+"Plug 'Rip-Rip/clang_complete'
+" Syntax checker
+"Plug 'scrooloose/syntastic'
+" Find files, MRU, tags, etc.
+Plug 'ctrlpvim/ctrlp.vim'
+" List modified files in a git repo
+Plug 'jasoncodes/ctrlp-modified.vim'
+" File browser
+Plug 'scrooloose/nerdtree'
+" Switch src/header
+Plug 'derekwyatt/vim-fswitch'
+" Operators highlight
+Plug 'Valloric/vim-operator-highlight'
+" Improved syntax highlight for C++
+Plug 'octol/vim-cpp-enhanced-highlight'
+" Quick list and location list toggler
+Plug 'Valloric/ListToggle'
+" NOTE problems with vim-fugitive ?
+"Plug 'DirDiff.vim'
+" For Git
+Plug 'tpope/vim-fugitive'
+" Add commands like Remove, Move, Find
+Plug 'tpope/vim-eunuch'
+" Git gutter, with stage and revert in <leader>hs / hr
+Plug 'airblade/vim-gitgutter'
+" Improved status line
+Plug 'bling/vim-airline'
+" Hexmode
+" Plug 'fidian/hexmode'
+" Expand and restrict regions progressively
+Plug 'terryma/vim-expand-region'
+" #ifdef highlighting
+Plug 'vim-scripts/ifdef-highlighting'
+" :AsyncRun make ... etc
+Plug 'skywind3000/asyncrun.vim'
+```
 
 ## Some custom mappings
 
