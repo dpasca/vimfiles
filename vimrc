@@ -16,6 +16,11 @@ if MySys() == "windows"
 "    set shellslash " default to forward slash, like for Unix
 endif
 
+" OLD
+"if has('nvim')
+"    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"endif
+
 if (has("termguicolors"))
     set termguicolors
 endif
@@ -26,9 +31,9 @@ call plug#begin($HOME . '/.vim/plugged')
 
 " -- From github and vim-scripts
 " Automatically run autocomplete. No need for ctrl-n/p
-Plug 'AutoComplPop'
-" Updates tags automatically (needs existing ctags)
-Plug 'AutoTag'
+Plug 'eparreno/vim-l9'
+Plug 'othree/vim-autocomplpop'
+
 " Switch color schemes with F8
 "Plug 'xolox/vim-misc'
 "Plug 'xolox/vim-colorscheme-switcher'
@@ -72,6 +77,8 @@ Plug 'bling/vim-airline'
 Plug 'terryma/vim-expand-region'
 " #ifdef highlighting
 Plug 'vim-scripts/ifdef-highlighting'
+" :AsyncRun make ... etc
+Plug 'skywind3000/asyncrun.vim'
 
 " set the language menu (later than this won't work)
 set langmenu=en
@@ -117,9 +124,9 @@ set autoread
 " enable ALT key for Mac
 if exists('+macmeta') && !has("gui_running")
     " special case for when running in OS X terminal (iTerm 2)
-    map <silent> โ?:cnext<CR>
-    map <silent> ห?:cprevious<CR>
-    map <silent> รง :cclose<CR>
+    map <silent> <C-S-j> :cnext<CR>
+    map <silent> <C-S-k> :cprevious<CR>
+    map <silent> <C-S-c> :cclose<CR>
 else
     map <silent> <A-j> :cnext<CR>
     map <silent> <A-k> :cprevious<CR>
@@ -130,10 +137,17 @@ endif
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 
-" additional tab nagivation with ctrl-j/k or gr
+" additional tabs nagivation
 nnoremap gr :tabprevious<CR>
-nnoremap <c-h> :tabprevious<CR>
-nnoremap <c-l> :tabnext<CR>
+nnoremap <s-tab> :tabprevious<CR>
+nnoremap , :tabnext<CR>
+
+" simplified splits nagivation
+" Using C-hjkl to move around
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
 
 " select next/prev using C-j/k instead of C-n/p
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("j"))
@@ -142,7 +156,7 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("k"))
 " == hints on wild menu
 set wildchar=<Tab> wildmenu wildmode=full
 
-" change the mapleader from \ to ,
+" change the mapleader from \ to Space
 let mapleader="\<Space>"
 
 " CtrlP tags lookup
@@ -154,6 +168,10 @@ nnoremap <leader>f :GitGrep<Space>
 nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
 " <leader>cd to change the dir to the current file
 nnoremap <leader>cd :cd %:p:h<CR> 
+
+" ctrlp-modified shortcuts (NOTE: not working in Windows ?)
+map <Leader>m :CtrlPModified<CR>
+map <Leader>M :CtrlPBranch<CR>
 
 " shortcut to quickly find a file in NERDTree
 nmap <leader>p :NERDTreeFind<CR>
@@ -200,6 +218,18 @@ set undofile
 set undolevels=5000 "maximum number of changes that can be undone
 set undoreload=50000 "maximum number lines to save for undo on a buffer reload
 
+" == AsyncRun for :Make and vim-fugitive
+" see: https://github.com/skywind3000/asyncrun.vim/wiki/Cooperate-with-famous-plugins#fugitive
+"command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+"
+"if exists(':Make') == 2
+"    noautocmd Make
+"else
+"    silent noautocmd make!
+"    redraw!
+"    return 'call fugitive#cwindow()'
+"endif
+
 " == file types
 au BufReadPost *.sl set syntax=cpp
 "au BufReadPost *.glsl set syntax=cpp
@@ -238,8 +268,6 @@ let g:clang_auto_select = 1
 let g:clang_snippets = 1
 let g:clang_conceal_snippets = 1
 let g:clang_snippets_engine = "clang_complete"
-"let g:clang_trailing_placeholder = 1
-"let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
 
@@ -252,7 +280,10 @@ let g:airline_section_y = '' " no file encoding/format
 let g:airline_section_z = '' " no file location
 
 " ==
-let g:gitgutter_grep_command='grep -e'
+let g:gitgutter_async = 1
+"let g:gitgutter_grep_command = 'grep -e'
+"let g:gitgutter_realtime = 0
+"let g:gitgutter_eager = 0
 
 " ==
 set conceallevel=2
@@ -297,8 +328,10 @@ if has('autocmd') && has('syntax')
 endif
 
 hi Braces guifg=#a0ff60
+
 hi Search guibg=brown guifg=NONE
 hi Normal guibg=#121212
+
 " for vim op highlight plugin
 let g:ophigh_color_gui = "#F6FF00"
 
@@ -311,7 +344,7 @@ let g:ophigh_color_gui = "#F6FF00"
 
 "================================
 if MySys() == "mac"
-    set gfn=Consolas:h10
+    set gfn=Consolas:h9
     "set gfn=Menlo:h14
 elseif MySys() == "windows"
     "set gfn=MS\ Gothic:h10
@@ -330,15 +363,6 @@ if has("gui_running")
     else
         set lines=999 columns=999
     endif
-"else
-"    " This is console Vim.
-"    if exists("+lines")
-"      set lines=56
-"    endif
-"
-"    if exists("+columns")
-"      set columns=170
-"    endif
 endif
 
 " == Fix the swap file issue with Win 7
