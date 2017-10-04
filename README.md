@@ -74,7 +74,7 @@ Plug 'skywind3000/asyncrun.vim'
 
 ## Some custom mappings
 
-NOTE: my \<leader\> is set to `,` (comma).
+NOTE: my \<leader\> is set to Space key
 
 * \<leader\>o: triggers *fswitch* to change between header/source
 * \<leader\>s: calls `CtrlPTag` to search for a tag interactively
