@@ -49,6 +49,8 @@ Plug 'tjennings/git-grep-vim'
 "Plug 'scrooloose/syntastic'
 " Find files, MRU, tags, etc.
 Plug 'ctrlpvim/ctrlp.vim'
+" Tagbar
+Plug 'majutsushi/tagbar'
 " List modified files in a git repo
 Plug 'jasoncodes/ctrlp-modified.vim'
 " File browser
@@ -309,7 +311,18 @@ nmap <silent> <Leader>o :FSHere<cr>
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 
 " == Useful abbreviations
-ab //// //==================================================================
+iab ==== //==================================================================
+
+"================================
+" http://vim.wikia.com/wiki/Use_eval_to_create_dynamic_templates
+augroup templates
+  au!
+  " read in template files
+  autocmd BufNewFile *.* silent! execute '0r $MYVIMFILES/templates/skeleton.'.expand("<afile>:e")
+
+  " parse special text in the templates after the read
+  autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+augroup END
 
 "================================
 " No toolbar, no menu bar, no scroll bars
