@@ -7,7 +7,7 @@
 //==================================================================
 
 #include "stdafx.h"
-#include "[:VIM_EVAL:]expand('%:t')[:END_EVAL:]"
+#include "[:VIM_EVAL:]expand('%:t:r') . '.h'[:END_EVAL:]"
 
 //==================================================================
 [:VIM_EVAL:]expand('%:t:r')[:END_EVAL:]::[:VIM_EVAL:]expand('%:t:r')[:END_EVAL:]()
