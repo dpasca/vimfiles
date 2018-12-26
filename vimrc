@@ -69,6 +69,10 @@ Plug 'Valloric/ListToggle'
 Plug 'tpope/vim-fugitive'
 " Add commands like Remove, Move, Find
 Plug 'tpope/vim-eunuch'
+" For Git Gutter to work well with gVim + msys (temp file path issue)
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-shell'
+Plug 'xolox/vim-notes'
 " Git gutter, with stage and revert in <leader>hs / hr
 Plug 'airblade/vim-gitgutter'
 " Improved status line
@@ -191,9 +195,9 @@ set tm=500
 " == shortcuts
 "map <C-TAB> :b#<CR>
  
-" == share clipboard with system (Windows only ?)
-set clipboard=unnamed
- 
+" == share clipboard Windows and Linux shell
+set clipboard^=unnamed,unnamedplus
+
 " == word wrapping
 set linebreak
  
@@ -286,9 +290,14 @@ let g:gitgutter_async = 1
 "let g:gitgutter_grep_command = 'grep -e'
 "let g:gitgutter_realtime = 0
 "let g:gitgutter_eager = 0
+nmap <Leader>hr <Plug>GitGutterUndoHunk
+
+" == vim-notes
+let g:notes_directories = ['$HOME/Dropbox/Notes']
+let g:notes_suffix = '.txt'
 
 " ==
-set conceallevel=2
+"set conceallevel=2
 set concealcursor=vin
 " Complete options (disable preview scratch window,
 " longest removed to aways show menu)
@@ -303,6 +312,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|o|d|jar|class)$',
   \ }
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+let g:ctrlp_lazy_update = 350
 
 " == Settings for fswitch
 nmap <silent> <Leader>o :FSHere<cr>
@@ -338,7 +348,13 @@ color candycode
 "syn match Braces display '[{}()\[\]]'
 if has('autocmd') && has('syntax')
     au VimEnter * au Syntax * syn match Braces display '[{}()\[\]<>]'
+    " using 'c_auto' for 'const auto'
+    au VimEnter * au Syntax * syntax keyword cppSTLtype c_auto
 endif
+
+"== disable autocomplpop in terminal mode
+au BufEnter * if &buftype == 'terminal' | AcpDisable | setlocal bufhidden=hide | endif
+au BufLeave * if &buftype == 'terminal' | AcpEnable | endif
 
 hi Braces guifg=#a0ff60
 
@@ -364,6 +380,8 @@ elseif MySys() == "windows"
     "set gfn=Bitstream\ Vera\ Sans\ Mono:h9
     set gfn=Inconsolata:h9
 elseif MySys() == "linux"
+    "set gfn=DejaVu\ Sans\ Mono\ 10
+    "set gfn=Inconsolata\ 8
     set gfn=DejaVu\ Sans\ Mono\ 10
 endif
 
@@ -377,6 +395,8 @@ if has("gui_running")
         set lines=999 columns=999
     endif
 endif
+
+let g:shell_fullscreen_items=0
 
 " == Fix the swap file issue with Win 7
 "if MySys() == "windows"
