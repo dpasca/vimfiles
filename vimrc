@@ -43,8 +43,6 @@ Plug 'morhetz/gruvbox'
 Plug 'henrik/vim-qargs'
 " GitGrep for fast grepping
 Plug 'tjennings/git-grep-vim'
-"" clang-driven autocomplete and jump
-"Plug 'Rip-Rip/clang_complete'
 " Syntax checker
 "Plug 'scrooloose/syntastic'
 " Find files, MRU, tags, etc.
@@ -170,7 +168,7 @@ nnoremap <leader>s :CtrlPTag<CR>
 " <leader>[w]f to find input for GitGrep
 nnoremap <leader>wf :GitGrep -w <cword><Space>
 nnoremap <leader>f :GitGrep<Space>
-" <leader>g to find a tag (C-] is taken over by clang_complete)
+" <leader>g to find a tag
 nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
 " <leader>cd to change the dir to the current file
 nnoremap <leader>cd :cd %:p:h<CR> 
@@ -257,25 +255,6 @@ au BufNewFile,BufRead *.frag,*.vert,*.tesc,*.tese*.fp,*.vp,*.glsl,*.sl SetGLSLFi
 " == enhanced cpp syntax highlight options
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
-
-" == clang_complete 
-let g:clang_user_options = '-std=c++11'
-if MySys() == "windows"
-    " NOTE: https://github.com/Rip-Rip/clang_complete/wikia
-    "   docs say to put " ad begin of clang_exec and at end of
-    "   clang_user_options but it's no longer working
-    let g:clang_exec = $MYCLANGLIBPATH . '/clang.exe'
-    let g:clang_library_path = '"' . $MYCLANGLIBPATH . '"'
-    let g:clang_user_options .= '2> NUL || exit 0'
-endif
-let g:clang_use_library = 1
-let g:clang_library_path = $MYCLANGLIBPATH
-let g:clang_auto_select = 1
-let g:clang_snippets = 1
-let g:clang_conceal_snippets = 1
-let g:clang_snippets_engine = "clang_complete"
-let g:clang_complete_macros = 1
-let g:clang_complete_patterns = 1
 
 " == vim-airline
 " no warnings about trailing, because it includes empty lines (!)
