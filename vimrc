@@ -255,6 +255,7 @@ au BufNewFile,BufRead *.frag,*.vert,*.tesc,*.tese*.fp,*.vp,*.glsl,*.sl SetGLSLFi
 " == enhanced cpp syntax highlight options
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
+let g:cpp_member_variable_highlight = 1
 
 " == vim-airline
 " no warnings about trailing, because it includes empty lines (!)
@@ -263,13 +264,6 @@ let g:airline_section_a = '' " no mode
 let g:airline_section_x = '' " no file type
 let g:airline_section_y = '' " no file encoding/format
 let g:airline_section_z = '' " no file location
-
-" ==
-let g:gitgutter_async = 1
-"let g:gitgutter_grep_command = 'grep -e'
-"let g:gitgutter_realtime = 0
-"let g:gitgutter_eager = 0
-nmap <Leader>hr <Plug>GitGutterUndoHunk
 
 " == vim-notes
 let g:notes_directories = ['$HOME/Dropbox/Notes']
@@ -342,6 +336,17 @@ hi Normal guibg=#121212
 
 " for vim op highlight plugin
 let g:ophigh_color_gui = "#F6FF00"
+
+" ==
+let g:gitgutter_async = 1
+"let g:gitgutter_grep_command = 'grep -e'
+"let g:gitgutter_realtime = 0
+"let g:gitgutter_eager = 0
+nmap <Leader>hr <Plug>GitGutterUndoHunk
+" NOTE: we set the highlight down here to override others
+highlight GitGutterAdd    guifg=#00aa00
+highlight GitGutterChange guifg=#aaaa00
+highlight GitGutterDelete guifg=#ff2222
 
 "=== Morning set
 "color default
