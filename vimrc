@@ -347,9 +347,9 @@ let g:ophigh_color_gui = "#F6FF00"
 
 " ==
 let g:gitgutter_async = 1
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
 "let g:gitgutter_grep_command = 'grep -e'
-"let g:gitgutter_realtime = 0
-"let g:gitgutter_eager = 0
 nmap <Leader>hr <Plug>(GitGutterUndoHunk)
 " NOTE: we set the highlight down here to override others
 highlight GitGutterAdd    guifg=#00aa00
