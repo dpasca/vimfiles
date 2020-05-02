@@ -135,6 +135,11 @@ else
     map <silent> <A-j> :cnext<CR>
     map <silent> <A-k> :cprevious<CR>
     map <silent> <A-c> :cclose<CR>
+
+    " my current xterm case... whatever works
+    map <silent> ê :cnext<CR>
+    map <silent> ë :cprevious<CR>
+    map <silent> ã :cclose<CR>
 endif
 
 " shortcuts for ListToggle
@@ -144,7 +149,14 @@ let g:lt_quickfix_list_toggle_map = '<leader>q'
 " additional tabs nagivation
 nnoremap gr :tabprevious<CR>
 nnoremap <s-tab> :tabprevious<CR>
+nnoremap M :tabprevious<CR>
 nnoremap , :tabnext<CR>
+
+" support for s-tab in xterm
+" https://neovim.io/doc/user/cmdline.html
+"cmap <Esc>[1~ <C-P>
+"https://stackoverflow.com/questions/2745428/how-to-capture-shift-tab-in-vim
+exe 'set t_kB=' . nr2char(27) . '[Z'
 
 " simplified splits nagivation
 " Using C-hjkl to move around
