@@ -44,3 +44,29 @@ Default ctags config file to be put either in:
 --fields=+iaS
 --extra=+q
 ```
+
+### tmux configuration
+
+Launch with `tmux -2` for a betetr chance to have full-color experience in vim/neovim.
+
+My `~.tmux.conf`:
+
+```tmux
+# mouse support
+set -g status-keys vi
+setw -g mode-keys vi
+
+set -s escape-time 0
+
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+```
