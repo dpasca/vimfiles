@@ -2,17 +2,19 @@
 
 ## Requirements
 
-Here's a sample .vimrc for Mac:
+Here's a sample `.vimrc` or `~/.config/nvim/init.vim` for Mac/Linux:
 ```vimscript
-let $MYVIMFILES="~/Dropbox/Settings/vimfiles"
+let $MYVIMFILES="~/vimfiles_dav"
+source $MYVIMFILES/vimrc
+```
+...and for Windows:
+
+```vimscript
+let $MYVIMFILES="$HOME/vimfiles_dav"
 source $MYVIMFILES/vimrc
 ```
 
-...and for Windows:
-```vimscript
-let $MYVIMFILES="$HOME/Dropbox/Settings/vimfiles"
-source $MYVIMFILES/vimrc
-```
+These assume that this repo was cloned in `~/vimfiles_dav` as an example.
 
 ## Some custom mappings
 
