@@ -31,7 +31,7 @@ NOTE: my \<leader\> is set to Space key
 ### ctags support
 
 Default ctags config file to be put either in:
-`<project>/.ctags` or `<project>/ctags.d/def.ctags` in case of "Universal Ctags" (suggested)
+`<project>/.ctags` or `<project>/ctags.d/def.ctags` in case of [Universal Ctags](https://github.com/universal-ctags/ctags) (suggested)
 
 ```bash
 --recurse=yes
