@@ -28,8 +28,11 @@ NOTE: my \<leader\> is set to Space key
 * C-j/k: cycle autocompletion entries, instead of using C-n/p
 
 ## Extras
-### My .ctags
-This is what my .ctags config file looks like (that I put locally in the the root of the git repo)
+### ctags support
+
+Default ctags config file to be put either in:
+`<project>/.ctags` or `<project>/ctags.d/def.ctags` in case of "Universal Ctags" (suggested)
+
 ```bash
 --recurse=yes
 --tag-relative=no
