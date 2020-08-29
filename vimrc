@@ -390,16 +390,16 @@ elseif MySys() == "linux"
     set gfn=DejaVu\ Sans\ Mono\ 10
 endif
 
-" Window sizing
-" see http://vim.wikia.com/wiki/Maximize_or_set_initial_window_size
-if has("gui_running")
-    if MySys() == "windows"
-        " Use ~x on an English Windows version or ~n for French.
-        au GUIEnter * simalt ~x
-    else
-        set lines=999 columns=999
-    endif
-endif
+"" Window sizing
+"" see http://vim.wikia.com/wiki/Maximize_or_set_initial_window_size
+"if has("gui_running")
+"    if MySys() == "windows"
+"        " Use ~x on an English Windows version or ~n for French.
+"        au GUIEnter * simalt ~x
+"    else
+"        set lines=999 columns=999
+"    endif
+"endif
 
 let g:shell_fullscreen_items=0
 
