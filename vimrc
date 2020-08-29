@@ -356,6 +356,7 @@ hi Normal guibg=#121212
 
 " for vim op highlight plugin
 let g:ophigh_color_gui = "#F6FF00"
+let g:ophigh_filetypes_to_ignore = { "s": 1, "asm": 1, "asm68k": 1 }
 
 " ==
 let g:gitgutter_async = 1
