@@ -16,6 +16,10 @@ source $MYVIMFILES/vimrc
 
 These assume that this repo was cloned in `~/vimfiles_dav` as an example.
 
+## Latest gvim Windows builds
+
+* https://tuxproject.de/projects/vim/x64/
+
 ## Some custom mappings
 
 NOTE: my \<leader\> is set to Space key
