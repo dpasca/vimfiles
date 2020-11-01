@@ -363,7 +363,9 @@ let g:gitgutter_async = 1
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 "let g:gitgutter_grep_command = 'grep -e'
-nmap <Leader>hr <Plug>(GitGutterUndoHunk)
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghp <Plug>(GitGutterPreviewHunk)
 " NOTE: we set the highlight down here to override others
 highlight GitGutterAdd    guifg=#00aa00
 highlight GitGutterChange guifg=#aaaa00
