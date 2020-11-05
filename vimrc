@@ -120,6 +120,7 @@ set noswapfile
 nnoremap ; :
 set scrolloff=1 " keep 1 line below and above the cursor
 set laststatus=2 " always show the status line
+set cursorline
 
 " automatically refresh changed files
 set autoread
