@@ -67,6 +67,9 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
+# colored prompt
+set -g default-terminal "screen-256color"
+
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
