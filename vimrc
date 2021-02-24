@@ -104,6 +104,7 @@ endif
 set iminsert=0
 set imsearch=0
 set encoding=utf-8
+set nobomb
 set mouse=a
 set ignorecase
 set smartcase
