@@ -374,9 +374,9 @@ highlight GitGutterChange guifg=#aaaa00
 highlight GitGutterDelete guifg=#ff2222
 
 "=== Morning set
-"color default
+"color morning
 "hi Braces guifg=#900000
-"hi Normal guibg=#f0f0f0
+"hi Normal guibg=#e0e0e0
 "let g:ophigh_color_gui = "#a00000"
 "set gfn=Lucida\ Console:h8
 
@@ -387,7 +387,7 @@ if MySys() == "mac"
 elseif MySys() == "windows"
     "set gfn=MS\ Gothic:h10
     "set gfn=Bitstream\ Vera\ Sans\ Mono:h9
-    set gfn=Inconsolata:h9
+    set gfn=Inconsolata:h8
 elseif MySys() == "linux"
     "set gfn=DejaVu\ Sans\ Mono\ 10
     "set gfn=Inconsolata\ 8
