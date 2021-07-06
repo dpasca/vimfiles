@@ -165,17 +165,23 @@ exe 'set t_kB=' . nr2char(27) . '[Z'
 " simplified splits nagivation
 " Using C-hjkl to move around
 nnoremap <C-h> <C-w><C-h>
+nnoremap <C-l> <C-w><C-l>
+"nnoremap <C-h> <C-w><C-h>90<C-w>\|
+"nnoremap <C-l> <C-w><C-l>90<C-w>\|
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
 inoremap <C-h> <C-w><C-h>
+inoremap <C-l> <C-w><C-l>
+"inoremap <C-h> <C-w><C-h>90<C-w>\|
+"inoremap <C-l> <C-w><C-l>90<C-w>\|
 inoremap <C-j> <C-w><C-j>
 inoremap <C-k> <C-w><C-k>
-inoremap <C-l> <C-w><C-l>
 tnoremap <C-h> <C-\><C-N><C-w><C-h>
+tnoremap <C-l> <C-\><C-N><C-w><C-l>
+"tnoremap <C-h> <C-\><C-N><C-w><C-h>90<C-w>\|
+"tnoremap <C-l> <C-\><C-N><C-w><C-l>90<C-w>\|
 tnoremap <C-j> <C-\><C-N><C-w><C-j>
 tnoremap <C-k> <C-\><C-N><C-w><C-k>
-tnoremap <C-l> <C-\><C-N><C-w><C-l>
 
 " select next/prev using C-j/k instead of C-n/p
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("j"))
