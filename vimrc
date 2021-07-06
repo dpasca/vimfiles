@@ -83,6 +83,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'vim-scripts/ifdef-highlighting'
 " :AsyncRun make ... etc
 Plug 'skywind3000/asyncrun.vim'
+" highlights and removes whitespaces
+Plug 'ntpeters/vim-better-whitespace'
 
 " set the language menu (later than this won't work)
 set langmenu=en
