@@ -128,6 +128,9 @@ set cursorline
 " automatically refresh changed files
 set autoread
 
+"This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
+
 " == windowing A-j/k/c to select and close the QuixFix window
 " enable ALT key for Mac
 if exists('+macmeta') && !has("gui_running")
