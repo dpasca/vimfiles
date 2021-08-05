@@ -58,7 +58,7 @@ Plug 'derekwyatt/vim-fswitch'
 " Operators highlight
 Plug 'Valloric/vim-operator-highlight'
 " Improved syntax highlight for C++
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'bfrg/vim-cpp-modern'
 " Quick list and location list toggler
 Plug 'Valloric/ListToggle'
 " NOTE problems with vim-fugitive ?
