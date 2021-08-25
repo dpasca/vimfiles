@@ -51,9 +51,9 @@ Default ctags config file to be put either in:
 
 ### tmux configuration
 
-Launch with `tmux -2` for a betetr chance to have full-color experience in vim/neovim.
+Launch with `tmux -2` for a better chance to have full-color experience in vim/neovim.
 
-My `~.tmux.conf`:
+My `~/.tmux.conf`:
 
 ```tmux
 # mouse support
@@ -76,4 +76,6 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+
+run -b '~/.tmux/plugins/tpm/tpm'
 ```
