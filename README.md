@@ -53,6 +53,12 @@ Default ctags config file to be put either in:
 
 Launch with `tmux -2` for a better chance to have full-color experience in vim/neovim.
 
+Clone TPM:
+
+```bash
+$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
 My `~/.tmux.conf`:
 
 ```tmux
@@ -77,5 +83,6 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 
+# keep this at the bottom
 run -b '~/.tmux/plugins/tpm/tpm'
 ```
