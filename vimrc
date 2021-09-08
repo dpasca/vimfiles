@@ -75,6 +75,8 @@ Plug 'xolox/vim-notes'
 Plug 'airblade/vim-gitgutter'
 " Improved status line
 Plug 'bling/vim-airline'
+" Themes for the status line
+Plug 'vim-airline/vim-airline-themes'
 " Hexmode
 " Plug 'fidian/hexmode'
 " Expand and restrict regions progressively
@@ -291,6 +293,7 @@ let g:cpp_experimental_template_highlight = 1
 let g:cpp_member_variable_highlight = 1
 
 " == vim-airline
+let g:airline_theme='base16_adwaita'
 " no warnings about trailing, because it includes empty lines (!)
 "let g:airline#extensions#whitespace#checks = [ 'indent' ]
 let g:airline_section_a = '' " no mode
