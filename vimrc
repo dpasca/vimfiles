@@ -126,6 +126,7 @@ nnoremap ; :
 set scrolloff=1 " keep 1 line below and above the cursor
 set laststatus=2 " always show the status line
 set cursorline
+set cursorcolumn
 
 " automatically refresh changed files
 set autoread
@@ -367,8 +368,8 @@ au BufLeave * if &buftype == 'terminal' | AcpEnable | endif
 
 hi Braces guifg=#a0ff60
 
-hi Search guibg=brown guifg=NONE
-hi Normal guibg=#121212
+hi Search guibg=#700000 guifg=NONE
+hi Normal guibg=#080808
 
 " for vim op highlight plugin
 let g:ophigh_color_gui = "#F6FF00"
