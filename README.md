@@ -75,6 +75,8 @@ bind l select-pane -R
 
 # colored prompt
 set -g default-terminal "screen-256color"
+# NOTE: Use the one below if Vim doesn't show colors in Cygwin/MSYS2 !
+#set -g default-terminal "xterm-256color"
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
