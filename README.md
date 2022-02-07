@@ -33,7 +33,8 @@ NOTE: my `<leader>` is set to Space key
 * `A-c`: close the quick fix window
 * `C-j/k`: cycle autocompletion entries, instead of using C-n/p
 
-## Extras
+## Extras (not included, but nice to collect here)
+
 ### ctags support
 
 Default ctags config file to be put either in:
@@ -88,3 +89,7 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 # keep this at the bottom
 run -b '~/.tmux/plugins/tpm/tpm'
 ```
+
+### Prompt that includes current git branch
+
+https://digitalfortress.tech/tips/setting-up-git-prompt-step-by-step/
