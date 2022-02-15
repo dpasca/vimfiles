@@ -110,13 +110,6 @@ GIT_PS1_SHOWUPSTREAM='auto'
 
 source ~/.git-prompt.sh
 
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1)\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1)\$ '
-fi
+# https://spin.atomicobject.com/2019/07/29/customize-bash-command-prompt/
+PS1='\e[1;35m[\t]\e[m \e[1;36m\u@\e[m\e[1;32m\h:\e[m\e[33;1m\w\e[m \e[1;31m$(__git_ps1)\e[m\n\[\e[01;33m\]$ \[\e[00m\]'
 ```
