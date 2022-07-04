@@ -355,11 +355,11 @@ color candycode
 " color molokai
 
 "= color matching braces
-"syn match Braces display '[{}()\[\]]'
 if has('autocmd') && has('syntax')
-    au VimEnter * au Syntax * syn match Braces display '[{}()\[\]<>]'
+    "syn match Braces display '[{}()\[\]]'
+    au VimEnter * au Syntax cpp syn match Braces display '[{}()\[\]<>]'
     " using 'c_auto' for 'const auto'
-    au VimEnter * au Syntax * syntax keyword cppSTLtype c_auto
+    au VimEnter * au Syntax cpp syn keyword cppSTLtype c_auto
 endif
 
 "== disable autocomplpop in terminal mode
