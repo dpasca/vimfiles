@@ -38,6 +38,8 @@ Plug 'othree/vim-autocomplpop'
 "Plug 'xolox/vim-misc'
 "Plug 'xolox/vim-colorscheme-switcher'
 "
+Plug 'srcery-colors/srcery-vim'
+
 Plug 'morhetz/gruvbox'
 " Example to search & replace after a grep: Qdo %s/src/repl
 Plug 'henrik/vim-qargs'
