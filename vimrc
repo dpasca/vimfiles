@@ -89,6 +89,8 @@ Plug 'vim-scripts/ifdef-highlighting'
 Plug 'skywind3000/asyncrun.vim'
 " highlights and removes whitespaces
 Plug 'ntpeters/vim-better-whitespace'
+" allow local configuration file by project
+Plug 'embear/vim-localvimrc'
 
 " set the language menu (later than this won't work)
 set langmenu=en
@@ -153,6 +155,11 @@ else
     map <silent> ë :cprevious<CR>
     map <silent> ã :cclose<CR>
 endif
+
+" localvimrc configuration
+let g:localvimrc_sandbox = 0
+let g:localvimrc_ask = 0
+let s:localvimrc_whitelist = '.*'
 
 " shortcuts for ListToggle
 let g:lt_location_list_toggle_map = '<leader>l'
