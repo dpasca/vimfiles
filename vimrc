@@ -353,8 +353,11 @@ set guioptions=i
 "================================
 " COLORS
 set t_Co=256
-color candycode
-" color molokai
+
+"color candycode
+"color molokai
+let g:srcery_black = '#0a0a0a'
+color srcery
 
 "= color matching braces
 if has('autocmd') && has('syntax')
