@@ -203,7 +203,7 @@ inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("k"))
 
 " == hints on wild menu
-set wildchar=<Tab> wildmenu wildmode=full
+set wildchar=<Tab> wildmenu wildmode=full wildoptions=pum
 
 " change the mapleader from \ to Space
 let mapleader="\<Space>"
