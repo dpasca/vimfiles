@@ -91,6 +91,8 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'ntpeters/vim-better-whitespace'
 " allow local configuration file by project
 Plug 'embear/vim-localvimrc'
+" local settings for tabs, etc.
+Plug 'editorconfig/editorconfig-vim'
 
 " set the language menu (later than this won't work)
 set langmenu=en
@@ -164,6 +166,10 @@ let s:localvimrc_whitelist = '.*'
 " shortcuts for ListToggle
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
+
+" settings for EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+au FileType gitcommit let b:EditorConfig_disable = 1
 
 " additional tabs nagivation
 nnoremap gr :tabprevious<CR>
