@@ -288,6 +288,7 @@ set undoreload=50000 "maximum number lines to save for undo on a buffer reload
 "endif
 
 " == file types
+au BufReadPost *.asc set syntax=cpp
 au BufReadPost *.sl set syntax=cpp
 "au BufReadPost *.glsl set syntax=cpp
 
