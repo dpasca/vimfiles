@@ -217,8 +217,8 @@ let mapleader="\<Space>"
 " CtrlP tags lookup
 nnoremap <leader>s :CtrlPTag<CR>
 " <leader>[w]f to find input for GitGrep
-nnoremap <leader>wf :GitGrep -w <cword><Space>
-nnoremap <leader>f :GitGrep<Space>
+nnoremap <leader>wf :GitGrep --recurse-submodules -w <cword><Space>
+nnoremap <leader>f :GitGrep --recurse-submodules<Space>
 " <leader>g to find a tag
 nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
 " <leader>cd to change the dir to the current file
