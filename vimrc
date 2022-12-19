@@ -257,7 +257,9 @@ set smarttab
 set expandtab
 set autoindent
 set smartindent
-
+set list
+"set listchars=tab:┌┬┐
+set listchars=tab:..
 " == disble auto comment on newline !
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
  
