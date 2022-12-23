@@ -238,9 +238,18 @@ let mapleader="\<Space>"
 
 " CtrlP tags lookup
 nnoremap <leader>s :CtrlPTag<CR>
-" <leader>[w]f to find input for GitGrep
-nnoremap <leader>wf :GitGrep --recurse-submodules -w <cword><Space>
-nnoremap <leader>f :GitGrep --recurse-submodules<Space>
+
+if executable("rg")
+    nnoremap <leader>wf :grep -w <cword><Space>
+    nnoremap <leader>f :grep<Space>
+
+    set grepprg=rg\ --vimgrep\ --no-heading\ --glob=!tags
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+else
+    nnoremap <leader>wf :GitGrep --recurse-submodules -w <cword><Space>
+    nnoremap <leader>f :GitGrep --recurse-submodules<Space>
+endif
+
 " <leader>g to find a tag
 nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
 " <leader>cd to change the dir to the current file
