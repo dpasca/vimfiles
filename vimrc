@@ -49,6 +49,28 @@ Plug 'tjennings/git-grep-vim'
 "Plug 'scrooloose/syntastic'
 " Find files, MRU, tags, etc.
 Plug 'ctrlpvim/ctrlp.vim'
+
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" preview for fzf
+"Plug 'yuki-yano/fzf-preview.vim'
+"Plug 'chengzeyi/fzf-preview.vim'
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+
 " Tagbar
 Plug 'majutsushi/tagbar'
 " List modified files in a git repo
@@ -227,6 +249,22 @@ nnoremap <leader>cd :cd %:p:h<CR>
 " ctrlp-modified shortcuts (NOTE: not working in Windows ?)
 map <Leader>m :CtrlPModified<CR>
 map <Leader>M :CtrlPBranch<CR>
+
+" fzf settings
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " shortcut to quickly find a file in NERDTree
 nmap <leader>p :NERDTreeFind<CR>
@@ -423,7 +461,11 @@ if MySys() == "mac"
 elseif MySys() == "windows"
     "set gfn=MS\ Gothic:h10
     "set gfn=Bitstream\ Vera\ Sans\ Mono:h9
-    set gfn=Inconsolata:h8
+    if has('nvim')
+        set gfn=Inconsolata:h8
+    else
+        set gfn=Inconsolata:h10
+    endif
 elseif MySys() == "linux"
     "set gfn=DejaVu\ Sans\ Mono\ 10
     "set gfn=Inconsolata\ 8
