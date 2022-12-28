@@ -72,7 +72,35 @@ let g:fzf_colors =
 
 
 " Tagbar
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
+"Plug 'skywind3000/gutentags_plus'
+Plug 'multilobyte/gtags-cscope'
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_ctags_tagfile = 'tags'
+let g:gutentags_modules = []
+if executable('ctags')
+	let g:gutentags_modules += ['ctags']
+endif
+if executable('gtags-cscope') && executable('gtags')
+	let g:gutentags_modules += ['gtags_cscope']
+endif
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--PHP-kinds=+cf']
+let g:gutentags_ctags_extra_args += ['--Go-kinds=+cf']
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+let g:gutentags_auto_add_gtags_cscope = 0
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.json', '*.xml',
+				\ '*.phar', '*.ini', '*.rst', '*.md', '*.bin',
+				\ '*storage/*', '*vendor/*', '*node_modules/*', '*public/*']
+
+"let g:gutentags_plus_switch = 1
+
+
 " List modified files in a git repo
 Plug 'jasoncodes/ctrlp-modified.vim'
 " File browser
