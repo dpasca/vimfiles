@@ -143,6 +143,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'embear/vim-localvimrc'
 " local settings for tabs, etc.
 Plug 'editorconfig/editorconfig-vim'
+" CoPilot support
+Plug 'github/copilot.vim'
 
 " set the language menu (later than this won't work)
 set langmenu=en
