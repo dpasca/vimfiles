@@ -158,6 +158,10 @@ set cursorline
 
 " automatically refresh changed files
 set autoread
+" necessary for neovim
+if has('nvim')
+    au FocusGained * :checktime
+endif
 
 "This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
