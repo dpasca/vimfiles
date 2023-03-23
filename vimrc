@@ -45,13 +45,16 @@ Plug 'morhetz/gruvbox'
 Plug 'henrik/vim-qargs'
 " GitGrep for fast grepping
 Plug 'tjennings/git-grep-vim'
+" ripgrep (NOTE: it benefits from skywind3000/asyncrun.vim)
+"Plug 'mattia72/vim-ripgrep'
 " Syntax checker
 "Plug 'scrooloose/syntastic'
 " Find files, MRU, tags, etc.
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " preview for fzf
 "Plug 'yuki-yano/fzf-preview.vim'
 "Plug 'chengzeyi/fzf-preview.vim'
@@ -69,6 +72,13 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+" FZF file search with ctrl-p
+nnoremap <C-p> :FZF<CR>
+" FZF tags lookup
+nnoremap <leader>s :Tags<CR>
+" FZF history
+nnoremap <leader>h :History<CR>
 
 
 " Tagbar
@@ -102,7 +112,7 @@ let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.json', '*.xml',
 
 
 " List modified files in a git repo
-Plug 'jasoncodes/ctrlp-modified.vim'
+"Plug 'jasoncodes/ctrlp-modified.vim'
 " File browser
 Plug 'scrooloose/nerdtree'
 " Switch src/header
@@ -243,22 +253,17 @@ exe 'set t_kB=' . nr2char(27) . '[Z'
 " Using C-hjkl to move around
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
-"nnoremap <C-h> <C-w><C-h>90<C-w>\|
-"nnoremap <C-l> <C-w><C-l>90<C-w>\|
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 inoremap <C-h> <C-w><C-h>
 inoremap <C-l> <C-w><C-l>
-"inoremap <C-h> <C-w><C-h>90<C-w>\|
-"inoremap <C-l> <C-w><C-l>90<C-w>\|
 inoremap <C-j> <C-w><C-j>
 inoremap <C-k> <C-w><C-k>
+" Disabled j/k since they conflict with the FZF panel when using C-j/k
 tnoremap <C-h> <C-\><C-N><C-w><C-h>
 tnoremap <C-l> <C-\><C-N><C-w><C-l>
-"tnoremap <C-h> <C-\><C-N><C-w><C-h>90<C-w>\|
-"tnoremap <C-l> <C-\><C-N><C-w><C-l>90<C-w>\|
-tnoremap <C-j> <C-\><C-N><C-w><C-j>
-tnoremap <C-k> <C-\><C-N><C-w><C-k>
+"tnoremap <C-j> <C-\><C-N><C-w><C-j>
+"tnoremap <C-k> <C-\><C-N><C-w><C-k>
 
 " select next/prev using C-j/k instead of C-n/p
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("j"))
@@ -268,10 +273,9 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("k"))
 set wildchar=<Tab> wildmenu wildmode=full wildoptions=pum
 
 " change the mapleader from \ to Space
-let mapleader="\<Space>"
-
-" CtrlP tags lookup
-nnoremap <leader>s :CtrlPTag<CR>
+"let mapleader="\<Space>"
+nnoremap <space> <Nop>
+map <Space> <Leader>
 
 if executable("rg")
     nnoremap <leader>wf :grep -w <cword><Space>
@@ -290,8 +294,8 @@ nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
 nnoremap <leader>cd :cd %:p:h<CR> 
 
 " ctrlp-modified shortcuts (NOTE: not working in Windows ?)
-map <Leader>m :CtrlPModified<CR>
-map <Leader>M :CtrlPBranch<CR>
+"map <Leader>m :CtrlPModified<CR>
+"map <Leader>M :CtrlPBranch<CR>
 
 " shortcut to quickly find a file in NERDTree
 nmap <leader>p :NERDTreeFind<CR>
@@ -356,6 +360,7 @@ set undoreload=50000 "maximum number lines to save for undo on a buffer reload
 au BufReadPost *.asc set syntax=cpp
 au BufReadPost *.sl set syntax=cpp
 "au BufReadPost *.glsl set syntax=cpp
+au BufReadPost *.hlsl set syntax=cpp
 
 command SetGLSLFileType call SetGLSLFileType()
 function SetGLSLFileType()
@@ -399,13 +404,13 @@ set completeopt=menu,menuone
 set pumheight=20
 
 " == Settings for CtrlP Finder
-let g:ctrlp_by_filename = 1
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$|bin$|obj|data$|Debug$|Release$|RelWithDebInfo$',
-  \ 'file': '\v\.(exe|so|dll|o|d|jar|class)$',
-  \ }
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-let g:ctrlp_lazy_update = 350
+"let g:ctrlp_by_filename = 1
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir':  '\.git$\|\.hg$\|\.svn$|bin$|obj|data$|Debug$|Release$|RelWithDebInfo$',
+"  \ 'file': '\v\.(exe|so|dll|o|d|jar|class)$',
+"  \ }
+"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+"let g:ctrlp_lazy_update = 350
 
 " == Settings for fswitch
 nmap <silent> <Leader>o :FSHere<cr>
@@ -489,7 +494,10 @@ elseif MySys() == "windows"
     "set gfn=MS\ Gothic:h10
     "set gfn=Bitstream\ Vera\ Sans\ Mono:h9
     if has('nvim')
-        set gfn=Inconsolata:h8
+        " NOTE: h10 is too big for neovim-qt.
+        " Better use Nvy instead
+        "set gfn=Inconsolata:h7
+        set gfn=Inconsolata:h10
     else
         set gfn=Inconsolata:h10
     endif
