@@ -206,10 +206,11 @@ endif
 "This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
+" IMPORTANT NOTE: enable ALT key in iTerm2:
+"  Preferences -> Profiles -> Keys -> Left Option Key: Esc+
 " == windowing A-j/k/c to select and close the QuixFix window
-" enable ALT key for Mac
-if exists('+macmeta') && !has("gui_running")
-    " special case for when running in OS X terminal (iTerm 2)
+if !exists('+macmeta') && !has("gui_running")
+    " special case for when meta is not available
     map <silent> <C-S-j> :cnext<CR>
     map <silent> <C-S-k> :cprevious<CR>
     map <silent> <C-S-c> :cclose<CR>
