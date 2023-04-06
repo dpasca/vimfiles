@@ -200,7 +200,12 @@ set cursorline
 set autoread
 " necessary for neovim
 if has('nvim')
-    au FocusGained * :checktime
+    " au FocusGained * :checktime
+    " https://www.reddit.com/r/neovim/comments/f0qx2y/comment/fgxa0f8/?utm_source=share&utm_medium=web2x&context=3
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+    " notification after file change
+    autocmd FileChangedShellPost *
+      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 endif
 
 "This unsets the "last search pattern" register by hitting return
