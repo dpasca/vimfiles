@@ -35,8 +35,8 @@ Plug 'eparreno/vim-l9'
 Plug 'othree/vim-autocomplpop'
 
 " Switch color schemes with F8
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-colorscheme-switcher'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-colorscheme-switcher'
 "
 Plug 'srcery-colors/srcery-vim'
 
@@ -462,7 +462,11 @@ hi Search guibg=#700000 guifg=NONE
 hi Normal guibg=#080808
 
 " for vim op highlight plugin
-let g:ophigh_color_gui = "#F6FF00"
+if &background == 'dark'
+    let g:ophigh_color_gui = "#F6FF00"
+else
+    let g:ophigh_color_gui = "#d6dF00"
+endif
 let g:ophigh_filetypes_to_ignore = { "s": 1, "asm": 1, "asm68k": 1, "html": 1 }
 
 " ==
