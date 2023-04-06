@@ -214,21 +214,14 @@ nnoremap <CR> :noh<CR><CR>
 " IMPORTANT NOTE: enable ALT key in iTerm2:
 "  Preferences -> Profiles -> Keys -> Left Option Key: Esc+
 " == windowing A-j/k/c to select and close the QuixFix window
-if !exists('+macmeta') && !has("gui_running")
-    " special case for when meta is not available
-    map <silent> <C-S-j> :cnext<CR>
-    map <silent> <C-S-k> :cprevious<CR>
-    map <silent> <C-S-c> :cclose<CR>
-else
-    map <silent> <A-j> :cnext<CR>
-    map <silent> <A-k> :cprevious<CR>
-    map <silent> <A-c> :cclose<CR>
+map <silent> <A-j> :cnext<CR>
+map <silent> <A-k> :cprevious<CR>
+map <silent> <A-c> :cclose<CR>
 
-    " my current xterm case... whatever works
-    map <silent> ê :cnext<CR>
-    map <silent> ë :cprevious<CR>
-    map <silent> ã :cclose<CR>
-endif
+" my current xterm case... whatever works
+map <silent> ê :cnext<CR>
+map <silent> ë :cprevious<CR>
+map <silent> ã :cclose<CR>
 
 " localvimrc configuration
 let g:localvimrc_sandbox = 0
