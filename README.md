@@ -84,6 +84,11 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
+# use the current pane's path for new panes
+bind c new-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind '"' split-window -v -c "#{pane_current_path}"
+
 # colored prompt
 set -g default-terminal "screen-256color"
 # NOTE: Use the one below if Vim doesn't show colors in Cygwin/MSYS2 !
