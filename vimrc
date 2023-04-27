@@ -156,6 +156,8 @@ Plug 'editorconfig/editorconfig-vim'
 " CoPilot support
 Plug 'github/copilot.vim'
 
+let g:copilot_filetypes = {'markdown': v:true}
+
 " set the language menu (later than this won't work)
 set langmenu=en
 
