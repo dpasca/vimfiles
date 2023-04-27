@@ -357,6 +357,22 @@ set undoreload=50000 "maximum number lines to save for undo on a buffer reload
 "    return 'call fugitive#cwindow()'
 "endif
 
+" == use 'Arun' for an AsyncRun that can be recalled with F5
+" useful to quickly recall a build && exec
+" example:
+"   type once:
+"     arun ./build.sh && ./run.sh
+"   ..and recall with F5
+function! s:AsyncRunRepeatLast()
+  if exists('s:last_async_command')
+    execute 'AsyncRun' s:last_async_command
+  else
+    echo 'No previous AsyncRun command found'
+  endif
+endfunction
+nnoremap <F5> :call <SID>AsyncRunRepeatLast()<CR>
+command! -nargs=+ Arun execute 'let s:last_async_command = <q-args>' | execute 'AsyncRun' <q-args>
+
 " == file types
 au BufReadPost *.asc set syntax=cpp
 au BufReadPost *.sl set syntax=cpp
