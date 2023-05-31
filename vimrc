@@ -449,10 +449,20 @@ set guioptions=i
 " COLORS
 set t_Co=256
 
-"color candycode
-"color molokai
+"=== colors
 let g:srcery_black = '#0a0a0a'
-color srcery
+
+set background=dark
+"set background=light
+
+if &background == "dark"
+    "color molokai
+    "color candycode
+    color srcery
+else
+    "color morning
+    color shine
+endif
 
 "= color matching braces
 if has('autocmd') && has('syntax')
@@ -466,16 +476,21 @@ endif
 au BufEnter * if &buftype == 'terminal' | AcpDisable | setlocal bufhidden=hide | endif
 au BufLeave * if &buftype == 'terminal' | AcpEnable | endif
 
-hi Braces guifg=#a0ff60
-
-hi Search guibg=#700000 guifg=NONE
-hi Normal guibg=#080808
+if &background == 'dark'
+    hi Braces guifg=#a0ff60
+    hi Search guibg=#700000 guifg=NONE
+    hi Normal guibg=#080808
+else
+    hi Braces guifg=#900000
+    hi Normal guibg=#e0e0e0
+endif
 
 " for vim op highlight plugin
 if &background == 'dark'
     let g:ophigh_color_gui = "#F6FF00"
 else
-    let g:ophigh_color_gui = "#d6dF00"
+    let g:ophigh_color_gui = "#004000"
+    "let g:ophigh_color_gui = "#a00000"
 endif
 let g:ophigh_filetypes_to_ignore = { "s": 1, "asm": 1, "asm68k": 1, "html": 1 }
 
@@ -491,13 +506,6 @@ nmap ghp <Plug>(GitGutterPreviewHunk)
 highlight GitGutterAdd    guifg=#00aa00
 highlight GitGutterChange guifg=#aaaa00
 highlight GitGutterDelete guifg=#ff2222
-
-"=== Morning set
-"color morning
-"hi Braces guifg=#900000
-"hi Normal guibg=#e0e0e0
-"let g:ophigh_color_gui = "#a00000"
-"set gfn=Lucida\ Console:h8
 
 "================================
 if MySys() == "mac"
