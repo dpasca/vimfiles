@@ -355,6 +355,8 @@ set undoreload=50000 "maximum number lines to save for undo on a buffer reload
 "   type once:
 "     arun ./build.sh && ./run.sh
 "   ..and recall with F5
+let g:asyncrun_silent = 0
+
 function! s:AsyncRunRepeatLast()
   if exists('s:last_async_command')
     execute 'AsyncRun' s:last_async_command
@@ -362,8 +364,15 @@ function! s:AsyncRunRepeatLast()
     echo 'No previous AsyncRun command found'
   endif
 endfunction
+
 nnoremap <F5> :call <SID>AsyncRunRepeatLast()<CR>
 command! -nargs=+ Arun execute 'let s:last_async_command = <q-args>' | execute 'AsyncRun' <q-args>
+
+augroup asyncrun_events
+  autocmd!
+  autocmd User AsyncRunStart echo "Command: " . s:last_async_command . " started."
+  autocmd User AsyncRunStop if g:asyncrun_status == 'success' | echohl Green | else | echohl Error | endif | echo "Command: " . s:last_async_command . " finished. Status: " . g:asyncrun_status | echohl None
+augroup END
 
 " == file types
 au BufReadPost *.asc set syntax=cpp
