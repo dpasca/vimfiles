@@ -155,6 +155,8 @@ Plug 'embear/vim-localvimrc'
 Plug 'editorconfig/editorconfig-vim'
 " CoPilot support
 Plug 'github/copilot.vim'
+" Navigate in tmux panes with ctrl-hjkl and \
+Plug 'christoomey/vim-tmux-navigator'
 
 let g:copilot_filetypes = {'markdown': v:true}
 
@@ -250,16 +252,6 @@ nnoremap , :tabnext<CR>
 "https://stackoverflow.com/questions/2745428/how-to-capture-shift-tab-in-vim
 exe 'set t_kB=' . nr2char(27) . '[Z'
 
-" simplified splits nagivation
-" Using C-hjkl to move around
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-l> <C-w><C-l>
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-inoremap <C-h> <C-w><C-h>
-inoremap <C-l> <C-w><C-l>
-inoremap <C-j> <C-w><C-j>
-inoremap <C-k> <C-w><C-k>
 " Disabled j/k since they conflict with the FZF panel when using C-j/k
 tnoremap <C-h> <C-\><C-N><C-w><C-h>
 tnoremap <C-l> <C-\><C-N><C-w><C-l>
