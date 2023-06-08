@@ -534,7 +534,7 @@ highlight GitGutterDelete guifg=#ff2222
 
 "================================
 if MySys() == "mac"
-    set gfn=Consolas:h9
+    set gfn=Iosevka:h10
     "set gfn=Menlo:h14
 elseif MySys() == "windows"
     "set gfn=MS\ Gothic:h10
@@ -543,14 +543,15 @@ elseif MySys() == "windows"
         " NOTE: h10 is too big for neovim-qt.
         " Better use Nvy instead
         "set gfn=Inconsolata:h7
-        set gfn=Inconsolata:h10
+        set gfn=Iosevka:h10.5
     else
-        set gfn=Inconsolata:h10
+        set gfn=Iosevka:h10.5
     endif
 elseif MySys() == "linux"
     "set gfn=DejaVu\ Sans\ Mono\ 10
     "set gfn=Inconsolata\ 8
-    set gfn=DejaVu\ Sans\ Mono\ 10
+    "set gfn=DejaVu\ Sans\ Mono\ 10
+    set gfn=Iosevka\ 10
 endif
 
 "" Window sizing
