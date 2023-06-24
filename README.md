@@ -84,10 +84,38 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# use the current pane's path for new panes
+# Use the current pane's path for new panes
 bind c new-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 bind '"' split-window -v -c "#{pane_current_path}"
+
+
+# BEGIN from https://github.com/JohnMurray/dotfiles/blob/master/.tmux.conf
+# Define my custom menu bar
+  # status bar colors
+  set -g status-bg black
+  set -g status-fg white
+
+  # alignment settings
+  set-option -g status-justify centre
+
+  # status left options
+  set-option -g status-left '#[fg=green][#[bg=black,fg=cyan]#S#[fg=green]]'
+  set-option -g status-left-length 20
+
+  # window list options
+  setw -g automatic-rename on
+  set-window-option -g window-status-format '#[fg=cyan,dim]#I#[fg=blue]:#[default]#W#[fg=grey,dim]#F'
+  set-window-option -g window-status-current-format '#[bg=blue,fg=cyan,bold]#I#[bg=blue,fg=cyan]:#[fg=colour230]#W#[fg=dim]#F'
+  set -g base-index 1
+
+  # status right options
+  set -g status-right '#[fg=green][#[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default]  #($HOME/bin/battery)#[fg=green]]'
+
+
+# bind a reload key
+bind R source-file ~/.tmux.conf \; display-message "  Config reloaded..".
+# END
 
 # colored prompt
 set -g default-terminal "screen-256color"
@@ -100,6 +128,8 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+
+set -g @plugin 'christoomey/vim-tmux-navigator'
 
 # keep this at the bottom
 run -b '~/.tmux/plugins/tpm/tpm'
