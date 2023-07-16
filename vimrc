@@ -388,8 +388,9 @@ command! -nargs=+ Arun execute 'let s:last_async_command = <q-args>' | execute '
 
 augroup asyncrun_events
   autocmd!
-  autocmd User AsyncRunStart echo "Command: " . s:last_async_command . " started."
-  autocmd User AsyncRunStop if g:asyncrun_status == 'success' | echohl Green | else | echohl Error | endif | echo "Command: " . s:last_async_command . " finished. Status: " . g:asyncrun_status | echohl None
+  autocmd User AsyncRunStart if exists('s:last_async_command') | echo "Command: " . s:last_async_command . " started." | endif
+  autocmd User AsyncRunStop if exists('s:last_async_command') | echohl Green | echo "Command: " . s:last_async_command . " Status: success" | echohl None | endif
+  autocmd User AsyncRunStop if exists('s:last_async_command') && g:asyncrun_status != 'success' | echohl Error | echo "Command: " . s:last_async_command . " Status: " . g:asyncrun_status | echohl None | endif
 augroup END
 
 " == file types
