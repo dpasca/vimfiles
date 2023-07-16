@@ -252,7 +252,9 @@ nnoremap , :tabnext<CR>
 "https://stackoverflow.com/questions/2745428/how-to-capture-shift-tab-in-vim
 exe 'set t_kB=' . nr2char(27) . '[Z'
 
-set splitbelow splitright
+" modify the split behavior
+"set splitbelow
+set splitright
 
 " if we are in GUI mode, then we cannot rely on vim-tmux-navigator
 if has('gui_running')
