@@ -157,6 +157,14 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'github/copilot.vim'
 " Navigate in tmux panes with ctrl-hjkl and \
 Plug 'christoomey/vim-tmux-navigator'
+" Plugin to format tables
+Plug 'dhruvasagar/vim-table-mode'
+
+" OpenAI support (requires CHAT_GPT_KEY in the env,
+"  exposes :Explain :Review :Rewrite :Fix :Test :GenerateCommit)
+" NOTE: it requires `pip install openai`, may also need `pip install neovim`
+Plug 'CoderCookE/vim-chatgpt'
+vmap <silent> <leader>0 <Plug>(chatgpt-menu)
 
 let g:copilot_filetypes = {'markdown': v:true}
 
