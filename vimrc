@@ -180,7 +180,8 @@ let g:copilot_filetypes = {
      \ | if f > 100000 || f == -2
      \ | let b:copilot_enabled = v:false
      \ | endif
-let g:copilot_filetypes = {'markdown': v:true}
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'javascript', 'c', 'css', 'go', 'java', 'json', 'lua', 'php', 'ruby', 'rust', 'sql', 'typescript', 'vim', 'yaml']
 
 " set the language menu (later than this won't work)
 set langmenu=en
