@@ -166,6 +166,20 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'CoderCookE/vim-chatgpt'
 vmap <silent> <leader>0 <Plug>(chatgpt-menu)
 
+" https://codeinthehole.com/tips/vim-and-github-copilot/
+" Other filetypes that should use CoPilot
+let g:copilot_filetypes = {
+    \ 'gitcommit': v:true,
+    \ 'markdown': v:true,
+    \ 'yaml': v:true
+    \ }
+
+" Disable CoPilot for large files
+ autocmd BufReadPre *
+     \ let f=getfsize(expand("<afile>"))
+     \ | if f > 100000 || f == -2
+     \ | let b:copilot_enabled = v:false
+     \ | endif
 let g:copilot_filetypes = {'markdown': v:true}
 
 " set the language menu (later than this won't work)
