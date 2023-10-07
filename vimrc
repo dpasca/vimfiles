@@ -315,7 +315,8 @@ if executable("rg")
     nnoremap <leader>wf :grep -w <cword><Space>
     nnoremap <leader>f :grep<Space>
 
-    set grepprg=rg\ --vimgrep\ --no-heading\ --glob=!tags
+    " Add --max-filesize=10M to avoid searching in files larger than 10MB
+    set grepprg=rg\ --vimgrep\ --no-heading\ --glob=!tags\ --max-filesize=10M
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 else
     nnoremap <leader>wf :GitGrep --recurse-submodules -w <cword><Space>
