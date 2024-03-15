@@ -185,6 +185,10 @@ let g:copilot_filetypes = {
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'javascript', 'c', 'css', 'go', 'java', 'json', 'lua', 'php', 'ruby', 'rust', 'sql', 'typescript', 'vim', 'yaml']
 
+" Support for Jupyter notebooks
+Plug 'goerz/jupytext.vim'
+let g:jupytext_fmt = 'py'
+
 " set the language menu (later than this won't work)
 set langmenu=en
 
