@@ -121,6 +121,8 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'Valloric/vim-operator-highlight'
 " Improved syntax highlight for C++
 Plug 'bfrg/vim-cpp-modern'
+" Improved syntax highlight for JavaScript
+Plug 'pangloss/vim-javascript'
 " Quick list and location list toggler
 Plug 'Valloric/ListToggle'
 " NOTE problems with vim-fugitive ?
