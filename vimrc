@@ -162,26 +162,24 @@ Plug 'christoomey/vim-tmux-navigator'
 " Plugin to format tables
 Plug 'dhruvasagar/vim-table-mode'
 
-" OpenAI support (requires CHAT_GPT_KEY in the env,
-"  exposes :Explain :Review :Rewrite :Fix :Test :GenerateCommit)
-" NOTE: it requires `pip install openai`, may also need `pip install neovim`
-Plug 'CoderCookE/vim-chatgpt'
-vmap <silent> <leader>0 <Plug>(chatgpt-menu)
+" Enable Copilot by default
+autocmd BufRead,BufNewFile * let b:copilot_enabled = v:true
 
 " https://codeinthehole.com/tips/vim-and-github-copilot/
 " Other filetypes that should use CoPilot
-let g:copilot_filetypes = {
-    \ 'gitcommit': v:true,
-    \ 'markdown': v:true,
-    \ 'yaml': v:true
-    \ }
+"let g:copilot_filetypes = {
+"    \ 'gitcommit': v:true,
+"    \ 'markdown': v:true,
+"    \ 'yaml': v:true
+"    \ }
 
-" Disable CoPilot for large files
- autocmd BufReadPre *
-     \ let f=getfsize(expand("<afile>"))
-     \ | if f > 100000 || f == -2
-     \ | let b:copilot_enabled = v:false
-     \ | endif
+" Conditionally disable Copilot for large files and notify
+autocmd BufReadPre *
+    \ let f=getfsize(expand("<afile>"))
+    \ | if f > 200000 || f == -2
+    \ | let b:copilot_enabled = v:false
+    \ | echo "Copilot disabled for this buffer due to file size."
+    \ | endif
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'javascript', 'c', 'css', 'go', 'java', 'json', 'lua', 'php', 'ruby', 'rust', 'sql', 'typescript', 'vim', 'yaml']
 
