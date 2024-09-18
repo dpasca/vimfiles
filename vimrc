@@ -80,36 +80,7 @@ nnoremap <leader>s :Tags<CR>
 " FZF history
 nnoremap <leader>h :History<CR>
 
-
-" Tagbar
-"Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
-"Plug 'skywind3000/gutentags_plus'
-Plug 'multilobyte/gtags-cscope'
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-let g:gutentags_ctags_tagfile = 'tags'
-let g:gutentags_modules = []
-if executable('ctags')
-	let g:gutentags_modules += ['ctags']
-endif
-if executable('gtags-cscope') && executable('gtags')
-	let g:gutentags_modules += ['gtags_cscope']
-endif
-let g:gutentags_cache_dir = expand('~/.cache/tags')
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--PHP-kinds=+cf']
-let g:gutentags_ctags_extra_args += ['--Go-kinds=+cf']
-let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
-let g:gutentags_auto_add_gtags_cscope = 0
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.json', '*.xml',
-				\ '*.phar', '*.ini', '*.rst', '*.md', '*.bin',
-				\ '*storage/*', '*vendor/*', '*node_modules/*', '*public/*']
-
-"let g:gutentags_plus_switch = 1
-
 
 " List modified files in a git repo
 "Plug 'jasoncodes/ctrlp-modified.vim'
@@ -125,8 +96,12 @@ Plug 'bfrg/vim-cpp-modern'
 Plug 'pangloss/vim-javascript'
 " Quick list and location list toggler
 Plug 'Valloric/ListToggle'
-" NOTE problems with vim-fugitive ?
-"Plug 'DirDiff.vim'
+" Dir Diff
+Plug 'ZSaberLv0/ZFVimDirDiff'
+Plug 'ZSaberLv0/ZFVimJob' " required
+Plug 'ZSaberLv0/ZFVimIgnore' " optional, but recommended for auto ignore setup
+" Plug 'ZSaberLv0/ZFVimBackup' " optional, but recommended for auto backup
+
 " For Git
 Plug 'tpope/vim-fugitive'
 " Add commands like Remove, Move, Find
@@ -157,6 +132,17 @@ Plug 'embear/vim-localvimrc'
 Plug 'editorconfig/editorconfig-vim'
 " CoPilot support
 Plug 'github/copilot.vim'
+
+" NOTE: will have to check again if Cody finally works
+" " Plenary required for Cody below
+" Plug 'nvim-lua/plenary.nvim'
+" " Sourcegraph Cody support
+" Plug 'sourcegraph/sg.nvim', { 'do': 'nvim -l build/init.lua' }
+
+" Tabby
+Plug 'TabbyML/vim-tabby'
+let g:tabby_keybinding_accept = '<Tab>'
+
 " Navigate in tmux panes with ctrl-hjkl and \
 Plug 'christoomey/vim-tmux-navigator'
 " Plugin to format tables
@@ -315,6 +301,35 @@ set wildchar=<Tab> wildmenu wildmode=full wildoptions=pum
 nnoremap <space> <Nop>
 map <Space> <Leader>
 
+" === BEGIN Guten Tags
+" Project root markers
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" Tag file name
+let g:gutentags_ctags_tagfile = 'tags'
+" Enable ctags module
+let g:gutentags_modules = ['ctags']
+" Cache directory
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+" Extra ctags arguments
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q', '--c++-kinds=+px', '--c-kinds=+px', '--PHP-kinds=+cf', '--Go-kinds=+cf', '--output-format=e-ctags']
+" Exclude patterns
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*.bin', '*storage/*', '*vendor/*', '*node_modules/*', '*public/*']
+" Enable asynchronous updates
+let g:gutentags_async = 1
+" Enable incremental updates
+let g:gutentags_ctags_incremental = 1
+" Enable incremental updates
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+" Filetypes
+let g:gutentags_ctags_extra_args += ['--languages=Python,JavaScript,TypeScript,C,C++,Rust,Go']
+" Status line indicator
+set statusline+=%{gutentags#statusline()}
+
+" Set tags option to include local tags file
+set tags=./tags;,tags;
+
 if executable("rg")
     nnoremap <leader>wf :grep -w <cword><Space>
     nnoremap <leader>f :grep<Space>
@@ -330,7 +345,7 @@ endif
 " <leader>g to find a tag
 nnoremap <leader>g :exec("tag ".expand("<cword>"))<CR>
 " <leader>cd to change the dir to the current file
-nnoremap <leader>cd :cd %:p:h<CR> 
+nnoremap <leader>cd :cd %:p:h<CR>
 
 " ctrlp-modified shortcuts (NOTE: not working in Windows ?)
 "map <Leader>m :CtrlPModified<CR>
@@ -351,13 +366,13 @@ set tm=500
 
 " == shortcuts
 "map <C-TAB> :b#<CR>
- 
+
 " == share clipboard Windows and Linux shell
 set clipboard^=unnamed,unnamedplus
 
 " == word wrapping
 set linebreak
- 
+
 " == tab spaces
 set tabstop=4
 set shiftwidth=4
@@ -370,7 +385,7 @@ set list
 set listchars=tab:..
 " == disble auto comment on newline !
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
- 
+
 " == persistent undo
 if !isdirectory($HOME . "/.vim")
     call mkdir($HOME . "/.vim", "p")
