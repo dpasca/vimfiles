@@ -520,50 +520,92 @@ set guioptions=i
 " COLORS
 set t_Co=256
 
-"=== colors
-let g:srcery_black = '#0a0a0a'
+" Function to set up custom syntax
+function! SetupCustomSyntax()
+    if has('autocmd') && has('syntax')
+        augroup CustomSyntaxHighlights
+            autocmd!
+            " Define custom syntax groups
+            syn match Braces display '[{}()\[\]<>]' containedin=ALL
+            syn match LogicalOperator display '\(&&\|||\|!\)' containedin=ALL
+            syn keyword cppSTLtype c_auto
+        augroup END
+    endif
+endfunction
 
+" Function to set up highlighting based on the background
+function! SetupHighlighting()
+    if &background ==# 'light'
+        " Light theme settings
+        highlight Braces guifg=#900000 gui=bold
+        highlight link Operator Normal
+        highlight link LogicalOperator Normal
+        highlight link OperatorHighlight Normal
+        highlight link vimOperator Normal
+        highlight Normal guibg=#ffffff guifg=#000000
+        highlight LineNr guifg=#505050 guibg=#e0e0e0
+        highlight Search guibg=#ffff00 guifg=#000000
+        let g:airline_theme='solarized'
+        let g:ophigh_disable = 1  " Disable operator highlighting
+        let g:ophigh_color_gui = "#a01000"
+    else
+        " Dark theme settings
+        highlight Braces guifg=#a0ff60 gui=bold
+        highlight Operator guifg=#F6FF00 gui=bold
+        highlight LogicalOperator guifg=#F6FF00 gui=bold
+        highlight OperatorHighlight guifg=#F6FF00 gui=bold
+        highlight vimOperator guifg=#F6FF00 gui=bold
+        highlight Normal guibg=#080808
+        highlight Search guibg=#700000 guifg=NONE
+        let g:airline_theme='base16_adwaita'
+        let g:ophigh_disable = 1  " Enable operator highlighting
+        let g:ophigh_color_gui = "#F6FF00"
+    endif
+
+    " Refresh operator highlighting
+    if exists('*OperatorHighlight#Refresh')
+        call OperatorHighlight#Refresh()
+    endif
+endfunction
+
+" Function to reapply custom syntax with a delay
+function! ApplyCustomSyntaxLater()
+    call timer_start(100, { -> SetupCustomSyntax() })
+    call timer_start(150, { -> SetupHighlighting() })
+endfunction
+
+" Call SetupCustomSyntax manually with a delay to ensure it happens last
+autocmd VimEnter * call ApplyCustomSyntaxLater()
+" Optionally reapply syntax after colorscheme or filetype change
+autocmd ColorScheme * call ApplyCustomSyntaxLater()
+
+" Updated ToggleTheme function
+function! ToggleTheme()
+    echom "Current background: " . &background
+
+    if &background ==# 'dark'
+        set background=light
+        colorscheme shine  " Can change this to any light theme
+    else
+        set background=dark
+        colorscheme srcery
+    endif
+endfunction
+
+" Add a command to call the function
+command! ToggleTheme call ToggleTheme()
+
+" Initial theme setup
 set background=dark
-"set background=light
+colorscheme srcery
 
-if &background == "dark"
-    "color molokai
-    "color candycode
-    color srcery
-else
-    "color morning
-    color shine
-endif
-
-"= color matching braces
-if has('autocmd') && has('syntax')
-    "syn match Braces display '[{}()\[\]]'
-    au VimEnter * au Syntax cpp syn match Braces display '[{}()\[\]<>]'
-    " using 'c_auto' for 'const auto'
-    au VimEnter * au Syntax cpp syn keyword cppSTLtype c_auto
-endif
-
-"== disable autocomplpop in terminal mode
-au BufEnter * if &buftype == 'terminal' | AcpDisable | setlocal bufhidden=hide | endif
-au BufLeave * if &buftype == 'terminal' | AcpEnable | endif
-
-if &background == 'dark'
-    hi Braces guifg=#a0ff60
-    hi Search guibg=#700000 guifg=NONE
-    hi Normal guibg=#080808
-else
-    hi Braces guifg=#900000
-    hi Normal guibg=#e0e0e0
-endif
-
-" for vim op highlight plugin
-if &background == 'dark'
-    let g:ophigh_color_gui = "#F6FF00"
-else
-    let g:ophigh_color_gui = "#004000"
-    "let g:ophigh_color_gui = "#a00000"
-endif
-let g:ophigh_filetypes_to_ignore = { "s": 1, "asm": 1, "asm68k": 1, "html": 1 }
+" Terminal Settings
+augroup TerminalSettings
+    " disable autocomplpop in terminal mode
+    autocmd!
+    autocmd BufEnter * if &buftype == 'terminal' | AcpDisable | setlocal bufhidden=hide | endif
+    autocmd BufLeave * if &buftype == 'terminal' | AcpEnable | endif
+augroup END
 
 " ==
 let g:gitgutter_async = 1
